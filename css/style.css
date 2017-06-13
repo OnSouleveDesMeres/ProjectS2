@@ -1,0 +1,20 @@
+#logoconnect {
+  height: 270px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+@media screen and (max-height: 650px) {
+#logoconnect {
+  height:160px;
+}
+}
+
+#erreur {
+  margin-top: 15%;
+}
+
+#form {
+    margin-top: 5px;
+}
