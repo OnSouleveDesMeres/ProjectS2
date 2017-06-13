@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34ce6a51-e20f-4ad6-9037-072770893dab" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Professeur.class.php" afterPath="$PROJECT_DIR$/Professeur.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cookieConnection.php" afterPath="$PROJECT_DIR$/cookieConnection.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,7 +14,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
@@ -40,9 +39,22 @@
       <file leaf-file-name="cookieConnection.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cookieConnection.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+            <state relative-caret-position="280">
+              <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Users.class.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Users.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="652">
+              <caret line="40" column="60" lean-forward="false" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
+              <folding>
+                <element signature="e#6#84#0#PHP" expanded="true" />
+                <marker date="1497355978071" expanded="true" signature="373:410" ph="SELECT * FRO... USERS" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,8 +91,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Professeur.class.php" />
-        <option value="$PROJECT_DIR$/cookieConnection.php" />
         <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/Users.class.php" />
+        <option value="$PROJECT_DIR$/cookieConnection.php" />
       </list>
     </option>
   </component>
@@ -242,12 +255,12 @@
       <option name="presentableId" value="Default" />
       <updated>1497342729917</updated>
       <workItem from="1497342732537" duration="1505000" />
-      <workItem from="1497351372712" duration="2882000" />
+      <workItem from="1497351372712" duration="4779000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4387000" />
+    <option name="totallyTimeSpent" value="6284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="27" width="1922" height="1054" extended-state="6" />
@@ -319,25 +332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Professeur.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
-          <folding>
-            <marker date="1497353918051" expanded="true" signature="1201:1242" ph="SELECT * FRO... PROFESSEUR" />
-            <marker date="1497353918051" expanded="true" signature="1577:1601" ph="SELECT * FRO... PROFESSEUR" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cookieConnection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="3" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -354,6 +348,36 @@
             <marker date="1497354187735" expanded="true" signature="1202:1444" ph="..." />
             <marker date="1497354187735" expanded="true" signature="1479:1619" ph="..." />
             <marker date="1497354187735" expanded="true" signature="1523:1600" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Professeur.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+          <folding>
+            <marker date="1497353918051" expanded="true" signature="1201:1242" ph="SELECT * FRO... PROFESSEUR" />
+            <marker date="1497353918051" expanded="true" signature="1577:1601" ph="SELECT * FRO... PROFESSEUR" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cookieConnection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Users.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="652">
+          <caret line="40" column="60" lean-forward="false" selection-start-line="40" selection-start-column="60" selection-end-line="40" selection-end-column="60" />
+          <folding>
+            <element signature="e#6#84#0#PHP" expanded="true" />
+            <marker date="1497355978071" expanded="true" signature="373:410" ph="SELECT * FRO... USERS" />
           </folding>
         </state>
       </provider>
