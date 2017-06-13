@@ -1,0 +1,12 @@
+td{
+    text-align: center;
+    font-size: 18px;
+}
+
+table{
+    border-spacing: 14px;
+}
+
+tr.impair{
+    background-color: lightskyblue;
+}
