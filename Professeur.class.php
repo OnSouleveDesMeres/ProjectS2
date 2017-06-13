@@ -69,7 +69,7 @@ class Professeur{
         $requete =<<<SQL
 SELECT *
 FROM PROFESSEUR
-WHERE id = ?
+WHERE IDPROF = ?
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
