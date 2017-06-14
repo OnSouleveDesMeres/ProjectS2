@@ -24,8 +24,8 @@ $titre1 = Webpage::escapeString("Ecole du Pré vers l'aisne");
 
 if (isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"])){
     $anniversaires = "";
-    $user = $_COOKIE["profFirstName"];
-    $titre1 = "Voici la liste de vos elèves";
+    $user = Webpage::escapeString($_COOKIE["profFirstName"]);
+    $titre1 = Webpage::escapeString("Voici la liste de vos elèves");
     $requete = <<<SQL
 SELECT NOM, PRNM, DATE_FORMAT(DATNS, '%d%m') AS DATNS
 FROM ELEVE
