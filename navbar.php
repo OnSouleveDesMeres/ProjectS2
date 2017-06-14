@@ -23,7 +23,6 @@ function navbar() {
                 $_cookie["prof"][0]->getPrenom()
                 . " ! </span>
           </div>
-        </nav>
         "
         ;
 
