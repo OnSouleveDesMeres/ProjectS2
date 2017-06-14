@@ -49,9 +49,10 @@
     right: 0;
 }
 
-.btn {
+#btnconnect {
     height: 40px;
     border-radius: 0px;
+    width:180px;
 }
 
 #bienvenue {
