@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <title>Administration</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Accueil</a>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><i class="fa fa-star" aria-hidden="true"></i> Pannel Admin</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown navbar-toggler-right">
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownconnect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> Se connecter
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">
+                    <div class="container-fluid">
+                        <form>
+                            <div class="form-group row">
+                                <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="text" placeholder="Utilisateur" required>
+                                <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="password" placeholder="Mot de passe" required>
+                                <button class="btn btn-success  offset-sm-1 col-sm-10 offset-sm-1" type="submit">Connexion</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row col-md-12">
+            <div class="col-md-12" style="height:50px;"></div>
+
+            <div class="alert alert-info offset-md-2 col-md-8 offset-md-2 text-center" role="alert">
+                <strong>Bienvenue %utilisateur% !</strong> Pas de nouvelles aujourd'hui.
+            </div>
+
+            <div class="col-md-12" style="height:50px;"></div>
+            <div class="col-md-6 offset-md-1">
+                <div class="card text-center">
+                    <div class="card-header">
+                       <i class="fa fa-graduation-cap" aria-hidden="true"></i> %Nom école% (si non connecté) / Voici vos étudiants de la classe %classe% (si connecté)
+                    </div>
+                    <div class="card-block">
+                        <img src="" alt="image-école">
+                    </div>
+                </div>
+            </div>
+
+            <div class="offset-md-1 col-md-3 offset-md-1">
+                <div class="card text-center">
+                    <div class="card-header">
+                       <i class="fa fa-users" aria-hidden="true"></i> Événements à venir :
+                    </div>
+                    <div class="card-block">
+                        %événements% ou %jours fériés%
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer footer-inverse bg-inverse">
+            <div class="container">
+                <span class="text-muted">Salut bande de petits zboub</span>
+            </div>
+        </footer>
+
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="js/javascript.js"></script>
+    </body>
+</html>
