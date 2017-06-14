@@ -13,6 +13,9 @@ function navbar() {
                     <li class="nav-item active">
                         <a class="nav-link" href="#"><i class="fa fa-star" aria-hidden="true"></i> Pannel Admin</a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="informations.php"><i class="fa fa-info-circle" aria-hidden="true"></i> Informations</a>
+                    </li>
                 </ul>
             </div>';
 
@@ -32,7 +35,7 @@ function navbar() {
     else {
      $navbar .=
      '  <div class="dropdown navbar-toggler-right">
-                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownconnect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id="btnconnect" class="btn btn-success dropdown-toggle" type="button" id="dropdownconnect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user-circle-o" aria-hidden="true"></i> Se connecter
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">

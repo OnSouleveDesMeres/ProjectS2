@@ -18,12 +18,14 @@ $w->appendJsURL('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/boot
 $w->appendJsURL('js/javascript.js');
 
 $user = "Utilisateur";
-$img = '<img alt="image ecole" src="http://www.asfeldjuzancourt.fr/uploads/1/0/0/4/100441872/published/ecole-primaire_1.jpg?1487146157">';
-$anniversaires = "<p>Pas d'évênements prévus d'ici un mois</p>";
+$img = '<img alt="image ecole" src="http://www.asfeldjuzancourt.fr/uploads/1/0/0/4/100441872/published/ecole-primaire_1.jpg?1487146157" style="height:100%;width:100%;">';
+$anniversaires = Webpage::escapeString("Pas d'événements prévus d'ici un mois");
+$titre1 = Webpage::escapeString("Ecole du Pré vers l'aisne");
 
 if (isset($_COOKIE["prof"]) && !empty($_COOKIE["prof"])){
     $anniversaires = "";
     $user = $_COOKIE["prof"]->getPrenom();
+    $titre1 = "Voici la liste de vos elèves";
     $requete = <<<SQL
 SELECT NOM, PRNM, DATE_FORMAT(DATNS, '%d%m') AS DATNS
 FROM ELEVE
@@ -67,9 +69,9 @@ HTML;
 $html .= '<div class="col-md-12" style="height:50px;"></div>
             <div class="col-md-6 offset-md-1">
                 <div class="card text-center">
-                    <div class="card-header">
+                    <div class="card-header"> 
 
-                       <i class="fa fa-graduation-cap" aria-hidden="true"></i> %Nom école% (si non connecté) / Voici vos étudiants de la classe %classe% (si connecté)
+                       <i class="fa fa-graduation-cap" aria-hidden="true"></i> ' . $titre1 . '
                  </div>
                     <div class="card-block">
                         '.$img.'
