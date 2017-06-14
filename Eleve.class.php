@@ -131,7 +131,7 @@ FROM ELEVE
 ORDER BY NOM
 SQL;
 
-        $pdo = myPDO::getInstance()->prepre($requete);
+        $pdo = myPDO::getInstance()->prepare($requete);
 
         $pdo->setFetchMode(PDO::FETCH_CLASS, 'Eleve');
 

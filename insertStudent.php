@@ -8,7 +8,9 @@
 
 require_once 'webpage.class.php';
 require_once 'myPDO.class.php';
-require_once 'getFromBD.php';
+require_once 'Insert.class.php';
+require_once 'Classe.class.php';
+require_once 'Eleve.class.php';
 
 $html = new WebPage("add to BD");
 
@@ -27,30 +29,31 @@ $html->appendJs("  $( function() {
 if(isset($_POST) && !empty($_POST)){
 
     if (isset($_POST["divorce"])) {
-        insertIntoDB($db, "ELEVE (IDCLASSE, NOM, PRNM, EMAIL1, NUMTEL1, VILLE1, CP1, RUE1, EMAIL2, NUMTEL2, VILLE2, CP2, RUE2, DATNS)", "'{$_POST["classe"]}', '{$_POST["nom"]}', '{$_POST["prenom"]}', '{$_POST["email1"]}', '{$_POST["numTel1"]}', '{$_POST["ville1"]}', '{$_POST["cp1"]}', '{$_POST["rue1"]}', '{$_POST["email2"]}', '{$_POST["numTel2"]}', '{$_POST["ville2"]}', '{$_POST["cp2"]}', '{$_POST["rue2"]}', STR_TO_DATE('{$_POST["datns"]}','%m/%d/%Y')");
+        Insert::insertIntoStudent($_POST["classe"], $_POST["nom"], $_POST["prenom"], $_POST["email1"], $_POST["numTel1"], $_POST["ville1"], $_POST["cp1"], $_POST["rue1"], $_POST["datns"], $_POST["email2"], $_POST["numTel2"], $_POST["ville2"], $_POST["cp2"], $_POST["rue2"]);
     }
     else{
-        insertIntoDB($db, "ELEVE (IDCLASSE, NOM, PRNM, EMAIL1, NUMTEL1, VILLE1, CP1, RUE1, DATNS)", "'{$_POST["classe"]}', '{$_POST["nom"]}', '{$_POST["prenom"]}', '{$_POST["email1"]}', '{$_POST["numTel1"]}', '{$_POST["ville1"]}', '{$_POST["cp1"]}', '{$_POST["rue1"]}', STR_TO_DATE('{$_POST["datns"]}','%m/%d/%Y')");
+        Insert::insertIntoStudent($_POST["classe"], $_POST["nom"], $_POST["prenom"], $_POST["email1"], $_POST["numTel1"], $_POST["ville1"], $_POST["cp1"], $_POST["rue1"], $_POST["datns"], null, null, null, null, null);
     }
+    
 }
 
 $select = "<select name='classe'>";
 
-$classes = getClasses($db);
+$classes = Classe::getAll();
 
 foreach ($classes AS $classe){
 
-    $select.="<option value='{$classe->id}'>{$classe->nom}</option>";
+    $select.="<option value='{$classe->getId()}'>{$classe->getNom()}</option>";
 
 }
 
 $select.="</select>";
 
-$students = getStudents($db);
+$students = Eleve::getAll();
 $tab = "<table><tr><th>id élève</th><th>id classe</th><th>nom</th><th>prenom</th><th>email</th><th>numTel</th><th>ville</th><th>code postal</th><th>rue</th><th>date de naissance</th></tr>";
 
 foreach ($students AS $eleves){
-    $tab.="<tr><td>{$eleves->id}</td><td>{$eleves->idClasse}</td><td>{$eleves->nom}</td><td>{$eleves->prenom}</td><td>{$eleves->email}</td><td>{$eleves->numTel}</td><td>{$eleves->ville}</td><td>{$eleves->cp}</td><td>{$eleves->rue}</td><td>{$eleves->datNs}</td></tr>";
+    $tab.="<tr><td>{$eleves->getId()}</td><td>{$eleves->getIdClass()}</td><td>{$eleves->getNom()}</td><td>{$eleves->getPrenom()}</td><td>{$eleves->getEmail()}</td><td>{$eleves->getNumeroTel()}</td><td>{$eleves->getVille()}</td><td>{$eleves->getCodePostal()}</td><td>{$eleves->getRue()}</td><td>{$eleves->getDateNaissance()}</td></tr>";
 }
 
 $html->appendContent("<form name='addToBD' method='post' action='insertStudent.php'>

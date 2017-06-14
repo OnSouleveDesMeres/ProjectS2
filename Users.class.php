@@ -22,7 +22,7 @@ class Users{
         $requete =<<<SQL
 SELECT *
 FROM USERS
-WHERE IDUSERS = ?
+WHERE IDUSER = ?
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
