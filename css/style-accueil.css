@@ -1,0 +1,106 @@
+#logoconnect {
+    height: 270px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+@media screen and (max-height: 650px) {
+    #logoconnect {
+        height:160px;
+    }
+}
+
+#erreur {
+    margin-top: 15%;
+}
+
+#form {
+    margin-top:10px;
+}
+
+.dropdown .dropdown-menu {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.dropdown.show .dropdown-menu {
+    max-height: 300px;
+    opacity: 1;
+}
+
+.navbar {
+    padding-top:0px;
+    padding-right:0px;
+    padding-bottom:0px;
+    padding-left: 20px;
+    line-height: 1,5px;
+}
+
+.navbar-toggler-right {
+    right: 0;
+}
+
+.btn {
+    height: 40px;
+    border-radius: 0px;
+}
+
+#bienvenue {
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+}
+
+.card-header {
+    background-color: #6BB9F0;
+}
+
+@media screen and (max-width: 1283px) {
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        height: 60;
+        line-height: 30px; /* Vertically center the text there */
+    }   
+}
+
+@media screen and (max-width: 767px) {
+    #card2 {
+        margin-top: 50px;
+    }
+}
+
+.row {
+    margin:0px;
+    padding: 0px;
+}

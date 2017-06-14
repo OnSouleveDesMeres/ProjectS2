@@ -9,7 +9,7 @@
         <link rel="icon" type="image/png" href="img/favicon.png" />
         <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style-accueil.css">
     </head>
     <body>
 
@@ -43,7 +43,8 @@
             </div>
         </nav>
 
-        <div class="row col-md-12">
+        <div class="col-md-12">
+
             <div class="col-md-12" style="height:50px;"></div>
 
             <div class="alert alert-info offset-md-2 col-md-8 offset-md-2 text-center" role="alert">
@@ -51,32 +52,39 @@
             </div>
 
             <div class="col-md-12" style="height:50px;"></div>
-            <div class="col-md-6 offset-md-1">
-                <div class="card text-center">
-                    <div class="card-header">
-                       <i class="fa fa-graduation-cap" aria-hidden="true"></i> %Nom école% (si non connecté) / Voici vos étudiants de la classe %classe% (si connecté)
-                    </div>
-                    <div class="card-block">
-                        <img src="" alt="image-école">
+
+            <div class="row">
+                <div class="col-md-6 offset-md-1">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <i class="fa fa-graduation-cap" aria-hidden="true"></i> %Nom école% (si non connecté) / Voici vos étudiants de la classe %classe% (si connecté)
+                        </div>
+                        <div class="card-block">
+                            <img src="" alt="image-école">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="offset-md-1 col-md-3 offset-md-1">
-                <div class="card text-center">
-                    <div class="card-header">
-                       <i class="fa fa-users" aria-hidden="true"></i> Événements à venir :
-                    </div>
-                    <div class="card-block">
-                        %événements% ou %jours fériés%
+                <div id="card2" class="offset-md-1 col-md-3 offset-md-1">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <i class="fa fa-users" aria-hidden="true"></i> Événements à venir :
+                        </div>
+                        <div class="card-block">
+                            %événements% ou %jours fériés%
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <footer class="footer footer-inverse bg-inverse">
-            <div class="container">
-                <span class="text-muted">Salut bande de petits zboub</span>
+        <div class="col-md-12" style="height:50px;"></div>
+        
+        <footer class="footer footer-inverse bg-inverse text-muted">
+            <div class="row">
+                <span class="offset-sm-1 col-sm-3">© Copyright 2016/2017 <strong>I.U.T Reims-Châlons-Charleville</strong></span>
+                <span class="offset-sm-1 col-sm-3">Chemin des Rouliers / CS30012 / 51687 REIMS CEDEX 2</span>
+                <a class="offset-sm-1 col-sm-3" href="http://www.univ-reims.fr/universite/organisation/organisation,7741,18258.html?&args=v6c8KtUbgtua5qBgA22_BFRfK6yFIeIoj8EcmN3JzmQeiUvNoRi1XBSVepe_gwJU4uFsUzkOJdUDlLJudc8M3g" target="_blank"><strong><i class="fa fa-phone-square" aria-hidden="true"></i> Nous contacter</strong></a>
             </div>
         </footer>
 
