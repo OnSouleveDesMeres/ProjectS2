@@ -22,13 +22,13 @@ function navbar() {
     if( isset($_COOKIE["profId"]) ) {
       $navbar .='<div class=\"dropdown navbar-toggler-right\">
                 <button id="btnconnect" class="btn btn-success dropdown-toggle" type="button" id="dropdownconnect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> '. Webpage::escapeString($_COOKIE["profFirstName"]).' 
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> '. Webpage::escapeString($_COOKIE["profFirstName"]).'
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">
                     <div class=\"container-fluid\">
                         <div class="dropdown navbar-toggler-right">
                             <a href="profile.php">Mon profil</a>
-                            <a href="deleteCookie.php">Déconnexion</a>
+                            <a href="cookieDelete.php">Déconnexion</a>
                         </div>
                     </div>
                 </div>

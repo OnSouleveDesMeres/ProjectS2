@@ -22,7 +22,7 @@ if (!isset($_cookie["prof"])) {
         }
     }
     else{
-        header("Location: login.php?pd");
+        header("Location: login.php");
     }
 }
 else{
