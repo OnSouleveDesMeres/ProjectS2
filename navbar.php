@@ -19,14 +19,20 @@ function navbar() {
                 </ul>
             </div>';
 
-    if( isset($_cookie["prof"]) ) {
-      $navbar .=
-        "  <div class='dropdown navbar-toggler-right'>
-                <span> Bonjour " .
-                $_cookie["prof"][0]->getPrenom()
-                . " ! </span>
-          </div>
-        "
+    if( isset($_COOKIE["profId"]) ) {
+      $navbar .='<div class=\"dropdown navbar-toggler-right\">
+                <button id="btnconnect" class="btn btn-success dropdown-toggle" type="button" id="dropdownconnect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> '.$_COOKIE["profFirstName"].' 
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">
+                    <div class=\"container-fluid\">
+                        <div class="dropdown navbar-toggler-right">
+                            <a href="profile.php">Mon profil</a>
+                            <a href="deleteCookie.php">Déconnexion</a>
+                        </div>
+                    </div>
+                </div>
+            </div>'
         ;
 
 
@@ -40,9 +46,9 @@ function navbar() {
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">
                     <div class="container-fluid">
-                        <form>
+                        <form method="post" action="cookieConnection.php">
                             <div class="form-group row">
-                                <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="text" placeholder="Utilisateur" required>
+                                <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="text" placeholder="Utilisateur" name="id" required>
                                 <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="password" placeholder="Mot de passe" required>
                                 <button class="btn btn-success  offset-sm-1 col-sm-10 offset-sm-1" type="submit">Connexion</button>
                             </div>

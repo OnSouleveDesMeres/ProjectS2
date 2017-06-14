@@ -22,9 +22,9 @@ $img = '<img alt="image ecole" src="http://www.asfeldjuzancourt.fr/uploads/1/0/0
 $anniversaires = Webpage::escapeString("Pas d'événements prévus d'ici un mois");
 $titre1 = Webpage::escapeString("Ecole du Pré vers l'aisne");
 
-if (isset($_COOKIE["prof"]) && !empty($_COOKIE["prof"])){
+if (isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"])){
     $anniversaires = "";
-    $user = $_COOKIE["prof"]->getPrenom();
+    $user = $_COOKIE["profFirstName"];
     $titre1 = "Voici la liste de vos elèves";
     $requete = <<<SQL
 SELECT NOM, PRNM, DATE_FORMAT(DATNS, '%d%m') AS DATNS
@@ -82,7 +82,7 @@ $html .= '<div class="col-md-12" style="height:50px;"></div>
             <div id="card2" class="offset-md-1 col-md-3 offset-md-1">
                 <div class="card text-center">
                     <div class="card-header">
-                       <i class="fa fa-users" aria-hidden="true"></i>' . Webpage::escapeString("Événements ce mois ci :") . '
+                       <i class="fa fa-users" aria-hidden="true"></i>' . Webpage::escapeString(" Événements ce mois ci :") . '
                     </div>
                     <div class="card-block">';
 
