@@ -25,6 +25,8 @@ if (isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"])){
     $anniversaires = "";
     $user = $_COOKIE["profFirstName"];
     $titre1 = "Voici la liste de vos elèves";
+    $img = "";
+    $titre1 = "Voici la liste de vos élèves";
     $requete = <<<SQL
 SELECT NOM, PRNM, DATE_FORMAT(DATNS, '%d%m') AS DATNS
 FROM ELEVE
@@ -42,18 +44,29 @@ SQL;
         $eleves = $pdo->fetchAll();
     }
     else{
-        throw new Exception('Erreur, impossible de récupérer les élèves');
+        throw new Exception('Erreur, impossible de trouver les élèves');
     }
     $mois = array(1 => "janvier", 2 => "février", 3 => "mars", 4 => "avril", 5 => "mai", 6 => "juin", 7 => "juillet", 8 => "aout", 9 => "septembre", 10 => "octobre", 11 => "novembre", 12 => "decembre");
 
+    $listeeleves = Eleve::getAll();
 
     for ($i = 0; $i<count($eleves); $i++) {
         $month = substr($eleves[$i]->getDateNaissance(),2,2);
         if ($month == '01' || $month == '02' || $month == '03' || $month == '04' || $month == '05' ||$month == '06' || $month == '07' ||$month == '08' || $month == '09') {
             $month = substr($month,1,1);
         }
-        $anniversaires .= '<p>' . $eleves[$i]->getNom() . " " . $eleves[$i]->getPrenom() . " - Anniversaire le " . substr($eleves[$i]->getDateNaissance(),0,2) . " " . $mois[$month] . "</p>";
+        $anniversaires .= '<p>' . $eleves[$i]->getNom() . " " . $eleves[$i]->getPrenom() . " - Anniversaire le " . substr($eleves[$i]->getDateNaissance(),0,2) . " " . $mois[$month] . "</p>";        
     }
+    	$img = '<table><tr>';
+    for ($i = 0; $i<count($listeeleves); $i++) {
+    	$img .= '<td><a href="panneladmin.php#recapeleves?id="' . $listeeleves[$i]->getId() . '">' . Webpage::escapeString($listeeleves[$i]->getNom()) . " " . Webpage::escapeString($listeeleves[$i]->getPrenom()) . '</a><td>';
+    	if (($i+1) % 3 == 0) {
+    		$img .= '</tr>';
+    	}
+    }
+    	$img.= '</tr></table>';
+
+
 }
 
 $html = <<<HTML
