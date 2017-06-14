@@ -85,7 +85,7 @@ body {
 
 @media screen and (max-width: 1283px) {
     .footer {
-        position:absolute;
+        position: absolute;
         bottom: 0;
         width: 100%;
         /* Set the fixed height of the footer here */
@@ -103,4 +103,19 @@ body {
 .row {
     margin:0px;
     padding: 0px;
+}
+
+.sidebar {
+    padding-left:0px;
+}
+
+#pillcorner {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.nav-pills .nav-link {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
 }
