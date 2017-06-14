@@ -49,7 +49,7 @@ function navbar() {
                         <form method="post" action="cookieConnection.php">
                             <div class="form-group row">
                                 <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="text" placeholder="Utilisateur" name="id" required>
-                                <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="password" placeholder="Mot de passe" required>
+                                <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="password" placeholder="Mot de passe" name="password" required>
                                 <button class="btn btn-success  offset-sm-1 col-sm-10 offset-sm-1" type="submit">Connexion</button>
                             </div>
                         </form>
