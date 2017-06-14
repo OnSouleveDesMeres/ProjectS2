@@ -43,32 +43,80 @@
             </div>
         </nav>
 
-                <div class="row col-sm-12">
-                    <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-                        
-                        <img src="img/noavatar.png" alt="photoprofil" class="img-circle img-thumbnail">
-                        
-                        <button type="button" class="btn btn-primary">Editer le profil</button>
-                        
-                        <ul class="nav nav-pills flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Lien 1</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Lien 2</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Lien 3</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Lien 4</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+        <div class="row col-sm-12">
+            <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
 
+                <div style="height:25px;"></div>
 
-        <div class="col-md-12" style="height:50px;"></div>
+                <center><img src="img/noavatar.png"  alt="photoprofil" width="50%" class="img-circle">
+
+                    <div style="height:25px;"></div>
+
+                    <button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Éditer le profil</button></center>
+
+                <div style="height:25px;"></div>
+
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#recapeleves">Récapitulatif de vos élèves</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Lien 2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Lien 3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Lien 4</a>
+                    </li>
+                </ul>
+            </nav>
+            <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+                <div style="height:55px;"></div>
+                <h1>Pannel Admin :</h1>
+
+                <div style="height:25px;"></div>
+
+                <section id="recapeleves" class="row text-center placeholders">
+                    <div class="offset-sm-1 col-sm-8 offset-sm-1 placeholder">
+                        <table class="table">
+                            <thead class="thead-inverse  text-center">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Ville</th>
+                                    <th>Code Postal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>Marseille</td>
+                                    <td>13001</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>Boulogne s/mer</td>
+                                    <td>62200</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>Reims</td>
+                                    <td>51100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
 
         <footer class="footer footer-inverse bg-inverse text-muted">
             <div class="row">
