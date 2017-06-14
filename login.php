@@ -9,7 +9,7 @@
 require_once 'webpage.class.php';
 
 $html = new WebPage('Login');
-if(isset($_COOKIE["prof"]) && !empty($_COOKIE["prof"])){
+if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])){
 
     header("Location: index.php");
 
