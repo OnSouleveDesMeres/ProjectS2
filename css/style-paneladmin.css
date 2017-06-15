@@ -113,46 +113,59 @@ body {
 }
 
 .sidebar {
-  position: fixed;
-  top: 51px;
-  bottom: 0;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  border-right: 1px solid #eee;
+    position: fixed;
+    top: 40px;
+    bottom: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #eee;
 }
 
 /* Sidebar navigation */
 .sidebar {
-  padding-left: 0;
-  padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .sidebar .nav {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .sidebar .nav-item {
-  width: 100%;
+    width: 100%;
 }
 
 .sidebar .nav-item + .nav-item {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .sidebar {
-  border-radius: 0;
+    border-radius: 0;
 }
 
 .placeholders {
-  padding-bottom: 3rem;
+    padding-bottom: 3rem;
 }
 
 .placeholder img {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
 th {
     text-align: center;
+}
+
+main {
+    margin-bottom: 150px;
+}
+
+.form-control, #sendstudent {
+    margin-bottom: 25px;
+}
+
+select, .custom-select {
+    margin-bottom: 25px;
+    width:100%;
 }
