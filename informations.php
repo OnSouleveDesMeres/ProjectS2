@@ -15,7 +15,7 @@ $w->appendJsURL('https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.m
 $w->appendJsURL('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"');
 $w->appendJsURL('js/javascript.js');
 
-$html = '<img src="http://wwwdoc/photos/photo.php?idpers=2487">';
+$html = '';
 $w->appendContent($html);
 $w->appendContent(footer());
 echo ($w->toHTML());
