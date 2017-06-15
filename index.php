@@ -85,23 +85,23 @@ $tps = count($ps);
 $tms = count($ms);
 $tgs = count($gs);
 
-    	$img = '<table class="text-left"><tr><th>Petite section</th><th>Moyenne section</th><th>Grande section</th></tr>';
+    	$img = '<table class="text-left"><tr><th class="text-center">Petite section</th><th class="text-center">Moyenne section</th><th class="text-center">Grande section</th></tr>';
     for ($i = 0; $i<$taille; $i++) {
     	$img .= '<tr>';
     		if ($i < $tps) {
-    		 $img .= '<td class="col-sm-4"><a href="panneladmin.php#recapeleves?id='.$ps[$i]->getId().'">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4" style="border-right:solid;"><a href="panneladmin.php#recapeleves?id='.$ps[$i]->getId().'" style="color:black;">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
     		}
     		else {
-    		 $img .= '<td></td>';
+    		 $img .= '<td style="border-right:solid;"></td>';
     		}
     		if ($i < $tms) {
-    		 $img .='<td class="col-sm-4"><a href="panneladmin.php#recapeleves?id="' . $ms[$i]->getId() . '">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
+    		 $img .='<td class="col-sm-4" style="border-right:solid;"><a href="panneladmin.php#recapeleves?id="' . $ms[$i]->getId() . '" style="color:black;">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
     		}
     		else {
-    		 $img .= '<td></td>';
+    		 $img .= '<td style="border-right:solid;"></td>';
     		}
     		if ($i < $tgs) {
-    		 $img .= '<td class="col-sm-4"><a href="panneladmin.php#recapeleves?id="' . $gs[$i]->getId() . '">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4"><a href="panneladmin.php#recapeleves?id="' . $gs[$i]->getId() . '" style="color:black;">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td></td>';
