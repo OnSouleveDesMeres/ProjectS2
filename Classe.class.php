@@ -7,6 +7,7 @@
  */
 
 require_once 'myPDO.class.php';
+require_once 'Eleve.class.php';
 
 class Classe{
 
@@ -57,13 +58,14 @@ SQL;
      * @return tableau d'instance d'élèves
      * @throws Exception
      */
-    public function getStudentFromClassId()
+    public static function getStudentFromClassId($id)
     {
 
         $requete = <<<SQL
 SELECT *
 FROM ELEVE e, CLASSE c
 WHERE e.IDCLASSE = ?
+AND e.IDCLASSE = c.IDCLASSE
 ORDER BY NOM
 SQL;
 
@@ -71,7 +73,7 @@ SQL;
 
         $pdo->setFetchMode(PDO::FETCH_CLASS, 'Eleve');
 
-        $res = $pdo->execute(array($this->getId()));
+        $res = $pdo->execute(array($id));
 
         if ($res) {
             $datas = $pdo->fetchAll();
@@ -109,4 +111,5 @@ SQL;
 
     }
 
+>>>>>>> 308da197a323cf1bc01c83482810d64daa6fa64d
 }

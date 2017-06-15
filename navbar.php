@@ -1,3 +1,4 @@
+
 <?php
 require_once "webpage.class.php";
 
@@ -8,10 +9,10 @@ function navbar() {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="#">Accueil</a>
+                <a class="navbar-brand" href="index.php">Accueil</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#"><i class="fa fa-star" aria-hidden="true"></i> Pannel Admin</a>
+                        <a class="nav-link" href="panel.php"><i class="fa fa-star" aria-hidden="true"></i> Pannel Admin</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="informations.php"><i class="fa fa-info-circle" aria-hidden="true"></i> Informations</a>
@@ -20,16 +21,14 @@ function navbar() {
             </div>';
 
     if( isset($_COOKIE["profId"]) ) {
-      $navbar .='<div class=\"dropdown navbar-toggler-right\">
+      $navbar .='<div class="dropdown navbar-toggler-right">
                 <button id="btnconnect" class="btn btn-success dropdown-toggle" type="button" id="dropdownconnect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> '. Webpage::escapeString($_COOKIE["profFirstName"]).' 
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> '.strtoupper(substr($_COOKIE["profFirstName"],0,1)) . substr($_COOKIE["profFirstName"],1).' 
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">
-                    <div class=\"container-fluid\">
-                        <div class="dropdown navbar-toggler-right">
+                    <div class="container-fluid">
                             <a href="profile.php">Mon profil</a>
-                            <a href="deleteCookie.php">Déconnexion</a>
-                        </div>
+                            <a href="cookieDelete.php">Déconnexion</a>
                     </div>
                 </div>
             </div>'

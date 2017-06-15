@@ -38,4 +38,5 @@ foreach ($listeClasses as $class){
 
 $html->appendContent($classes."</table>");
 
+>>>>>>> 308da197a323cf1bc01c83482810d64daa6fa64d
 echo $html->toHTML();
