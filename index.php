@@ -19,7 +19,7 @@ $w->appendJsURL('js/javascript.js');
 
 $nbAnnivAujourdhui = "Pas de nouvelles aujourd'hui.";
 $user = "Utilisateur";
-$img = '<img alt="image ecole" src="http://www.asfeldjuzancourt.fr/uploads/1/0/0/4/100441872/published/ecole-primaire_1.jpg?1487146157" style="height:100%;width:100%;">';
+$img = '<img alt="image ecole" src="https://preview.ibb.co/cmNif5/Asfeld_School.jpg" style="width:90%;">';
 $anniversaires = Webpage::escapeString("Veuillez vous connecter pour voir les évênements");
 $titre1 = Webpage::escapeString("Ecole du Pré vers l'aisne");
 
@@ -89,29 +89,29 @@ $tgs = count($gs);
     for ($i = 0; $i<$taille; $i++) {
     	$img .= '<tr>';
     		if ($i < $tps) {
-    		 $img .= '<td><a href="panneladmin.php#recapeleves?id='.$ps[$i]->getId().'">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4"><a href="panneladmin.php#recapeleves?id='.$ps[$i]->getId().'">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td></td>';
     		}
     		if ($i < $tms) {
-    		 $img .='<td><a href="panneladmin.php#recapeleves?id="' . $ms[$i]->getId() . '">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
+    		 $img .='<td class="col-sm-4"><a href="panneladmin.php#recapeleves?id="' . $ms[$i]->getId() . '">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td></td>';
     		}
     		if ($i < $tgs) {
-    		 $img .= '<td><a href="panneladmin.php#recapeleves?id="' . $gs[$i]->getId() . '">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4"><a href="panneladmin.php#recapeleves?id="' . $gs[$i]->getId() . '">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td></td>';
     		}
+                $img .= '</tr>';
 
     		}
-    		$img .= '</tr>';
 
-    }
     	$img.= '</table>';
+}
 
 
 
@@ -120,7 +120,7 @@ $html = <<<HTML
             <div class="col-md-12" style="height:50px;"></div>
 
             <div class="alert alert-info offset-md-2 col-md-8 offset-md-2 text-center" role="alert">
-                <strong>Bienvenue {$user} !</strong> {$nbAnnivAujourdhui}.
+                <strong>Bienvenue {$user} !</strong> {$nbAnnivAujourdhui}
             </div>
 HTML;
 
