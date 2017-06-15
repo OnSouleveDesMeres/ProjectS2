@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
-        <title>Pannel Administration</title>
+        <title>Panel Administration</title>
         <link rel="icon" type="image/png" href="img/favicon.png" />
         <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
@@ -21,7 +21,7 @@
                 <a class="navbar-brand" href="index.html">Accueil</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#"><i class="fa fa-star" aria-hidden="true"></i> Pannel Admin</a>
+                        <a class="nav-link" href="#"><i class="fa fa-star" aria-hidden="true"></i> Panel Admin</a>
                     </li>
                 </ul>
             </div>
@@ -48,85 +48,152 @@
 
                 <div style="height:25px;"></div>
 
-                <center><img src="img/noavatar.png"  alt="photoprofil" width="50%" class="img-circle">
-
+                <center>
+                    <img src="img/noavatar.png"  alt="photoprofil" width="50%" class="img-circle">
                     <div style="height:25px;"></div>
-
-                    <button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Éditer le profil</button></center>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Éditer le profil</button>
+                </center>
 
                 <div style="height:25px;"></div>
 
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#recapeleves">Récapitulatif de vos élèves</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Lien 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Lien 3</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Lien 4</a>
-                    </li>
+                <ul class="nav nav-pills flex-column" id="tabprincipale" role="tablist">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#recapeleve" role="tab" aria-controls="Récap des élèves">Récapitulatif des élèves</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutereleve" role="tab" aria-controls="Ajouter un élève">Ajouter un élève</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Messages</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Messages</a></li>
                 </ul>
+
             </nav>
+
             <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
                 <div style="height:55px;"></div>
-                <h1>Pannel Admin :</h1>
+                <h1>Panel Admin :</h1>
 
                 <div style="height:25px;"></div>
-                
-                    <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                    </div></center>
 
-                <section id="recapeleves" class="row text-center placeholders">
+                <div class="tab-content">
+                    <!---------------------------------------------------------->
+                    <div class="tab-pane active" id="recapeleve" role="tabpanel">
 
-                    <div style="overflow-x:auto;" class="offset-sm-2 col-sm-8 offset-sm-2 placeholder">
-                        <table class="table">
-                            <thead class="thead-inverse  text-center">
-                                <tr>
-                                    <th>#</th>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Ville</th>
-                                    <th>Code Postal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>Marseille</td>
-                                    <td>13001</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>Boulogne s/mer</td>
-                                    <td>62200</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>Reims</td>
-                                    <td>51100</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
+                            <button type="button" class="btn btn-secondary">Trier par...</button>
+                            <button type="button" class="btn btn-secondary">Trier par...</button>
+                            <button type="button" class="btn btn-secondary">Trier par...</button>
+                            </div>
+                        </center>
+
+                        <section class="row text-center placeholders">
+                            <div style="overflow-x:auto;" class="offset-sm-2 col-sm-8 offset-sm-2 placeholder">
+                                <table class="table">
+                                    <thead class="thead-inverse  text-center">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Ville</th>
+                                            <th>Code Postal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>Marseille</td>
+                                            <td>13001</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>Boulogne s/mer</td>
+                                            <td>62200</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>Reims</td>
+                                            <td>51100</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
                     </div>
-                </section>
+                    <!---------------------------------------------------------->
+                    <div class="tab-pane" id="ajoutereleve" role="tabpanel">
+                        <section class="row text-center placeholders">
+                            <div class="offset-sm-2 col-sm-8 offset-sm-2 placeholder">
+                                <form action="paneladmin.php" method="post">
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <input type="text" name="nom" class="form-control" placeholder="Nom" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="prenom" class="form-control" placeholder="Prénom" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="date" name="datens" class="form-control" placeholder="Date de naissance (JJ/MM/AAAA)" required pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="custom-select" required>
+                                                <option value="" selected>Choisissez une classe</option>
+                                                <option value="1">Petite section</option>
+                                                <option value="2">Moyenne section</option>
+                                                <option value="3">Grande section</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h4><label for="parentsepare" class="col-6 col-form-label">Parent 1</label></h4>
+                                            <input type="email" name="email" class="form-control" placeholder="unemail@exemple.com">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <h4><label for="parentsepare" class="col-6 col-form-label">(Parent 2 si séparé)</label></h4>
+                                            <input type="email" name="email" class="form-control" placeholder="unemail@exemple.com">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="tel"  name="telephone" class="form-control" placeholder="N° de téléphone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="tel"  name="telephone" class="form-control" placeholder="N° de téléphone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="ville1" class="form-control" placeholder="Ville" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="ville2" class="form-control" placeholder="Ville">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="ad1" class="form-control" placeholder="Adresse" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="ad2" class="form-control" placeholder="Adresse">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="cp1" class="form-control" placeholder="Code postal" pattern="[0-9]{5}" required>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="text" name="cp2" class="form-control" placeholder="Code postal" pattern="[0-9]{5}">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button id="sendstudent" type="submit" class="btn btn-primary">Ajouter l'élève</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                    <!---------------------------------------------------------->
+                    <div class="tab-pane" id="messages" role="tabpanel">
+                    </div>
+                    <!---------------------------------------------------------->
+                    <div class="tab-pane" id="settings" role="tabpanel">
+                    </div>
+                    <!---------------------------------------------------------->
+                </div>
+
             </main>
         </div>
 
