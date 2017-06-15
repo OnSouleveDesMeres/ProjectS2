@@ -4,6 +4,7 @@ require_once 'webpage.class.php';
 require_once 'Eleve.class.php';
 require_once 'navbar.php';
 require_once 'footer.php';
+require_once 'Classe.class.php';
 
 $w = new Webpage('Accueil');
 $w->appendCssURL('bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css');
@@ -48,8 +49,6 @@ SQL;
     }
     $mois = array(1 => "janvier", 2 => "février", 3 => "mars", 4 => "avril", 5 => "mai", 6 => "juin", 7 => "juillet", 8 => "aout", 9 => "septembre", 10 => "octobre", 11 => "novembre", 12 => "decembre");
 
-    $listeeleves = Eleve::getAll();
-
     for ($i = 0; $i<count($eleves); $i++) {
         $month = substr($eleves[$i]->getDateNaissance(),2,2);
         if ($month == '01' || $month == '02' || $month == '03' || $month == '04' || $month == '05' ||$month == '06' || $month == '07' ||$month == '08' || $month == '09') {
@@ -57,17 +56,53 @@ SQL;
         }
         $anniversaires .= '<p>' . $eleves[$i]->getNom() . " " . $eleves[$i]->getPrenom() . " - Anniversaire le " . substr($eleves[$i]->getDateNaissance(),0,2) . " " . $mois[$month] . "</p>";        
     }
-    	$img = '<table><tr>';
-    for ($i = 0; $i<count($listeeleves); $i++) {
-    	$img .= '<td><a href="panneladmin.php#recapeleves?id="' . $listeeleves[$i]->getId() . '">' . Webpage::escapeString($listeeleves[$i]->getNom()) . " " . Webpage::escapeString($listeeleves[$i]->getPrenom()) . '</a><td>';
-    	if (($i+1) % 3 == 0) {
-    		$img .= '</tr>';
-    	}
-    }
-    	$img.= '</tr></table>';
 
+$classes = Classe::getAll();
 
+$ps = Classe::getStudentFromClassId($classes[0]->getId());
+$ms = Classe::getStudentFromClassId($classes[1]->getId());
+$gs = Classe::getStudentFromClassId($classes[2]->getId());
+
+$taille = count($ps);
+if ($taille<count($ms)) {
+	$taille = count($ms);
 }
+if ($taille < count($gs)) {
+	$taille = count($gs);
+}
+
+$tps = count($ps);
+$tms = count($ms);
+$tgs = count($gs);
+
+    	$img = '<table class="text-left"><tr><th>Petite section</th><th>Moyenne section</th><th>Grande section</th></tr>';
+    for ($i = 0; $i<$taille; $i++) {
+    	$img .= '<tr>';
+    		if ($i < $tps) {
+    		 $img .= '<td><a href="panneladmin.php#recapeleves?id="' . $ps[$i]->getId() . '">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
+    		}
+    		else {
+    		 $img .= '<td></td>';
+    		}
+    		if ($i < $tms) {
+    		 $img .='<td><a href="panneladmin.php#recapeleves?id="' . $ms[$i]->getId() . '">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
+    		}
+    		else {
+    		 $img .= '<td></td>';
+    		}
+    		if ($i < $tgs) {
+    		 $img .= '<td><a href="panneladmin.php#recapeleves?id="' . $gs[$i]->getId() . '">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
+    		}
+    		else {
+    		 $img .= '<td></td>';
+    		}
+
+    		}
+    		$img .= '</tr>';
+    
+    }
+    	$img.= '</table>';
+
 
 $html = <<<HTML
         <div class="row col-md-12">
