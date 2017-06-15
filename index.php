@@ -25,7 +25,7 @@ $titre1 = Webpage::escapeString("Ecole du Pré vers l'aisne");
 
 if (isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"])){
     $anniversaires = "";
-    $user = $_COOKIE["profFirstName"];
+    $user = strtoupper(substr($_COOKIE["profFirstName"],0,1)) . substr($_COOKIE["profFirstName"],1);
     $titre1 = "Voici la liste de vos elèves";
     $img = "";
     $titre1 = "Voici la liste de vos élèves";

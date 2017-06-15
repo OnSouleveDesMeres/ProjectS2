@@ -22,7 +22,7 @@ function navbar() {
     if( isset($_COOKIE["profId"]) ) {
       $navbar .='<div class="dropdown navbar-toggler-right">
                 <button id="btnconnect" class="btn btn-success dropdown-toggle" type="button" id="dropdownconnect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> '.$_COOKIE["profFirstName"].' 
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> '.strtoupper(substr($_COOKIE["profFirstName"],0,1)) . substr($_COOKIE["profFirstName"],1).' 
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">
                     <div class="container-fluid">
