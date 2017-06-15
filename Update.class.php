@@ -9,7 +9,7 @@
 class Update{
 
     public static function updateStudent($id, $chp, $value){
-        if()
+        if($chp)
 
         $requete =<<<SQL
 UPDATE ELEVE SET $chp = $value

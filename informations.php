@@ -15,9 +15,6 @@ $w->appendJsURL('https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.m
 $w->appendJsURL('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"');
 $w->appendJsURL('js/javascript.js');
 
-<<<<<<< HEAD
-$html = '';
-=======
 $html =<<<HTML
 <div class="row">
     <div class="col-md-12" style="height: 50px;"></div>
@@ -52,9 +49,6 @@ $html =<<<HTML
     </div>
 </div>
 HTML;
-
-
->>>>>>> 13209b591396917cfe236b06ac12b340739369d1
 $w->appendContent($html);
 $w->appendContent(footer());
 echo ($w->toHTML());
