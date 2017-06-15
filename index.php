@@ -28,7 +28,6 @@ if (isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"])){
     $user = strtoupper(substr($_COOKIE["profFirstName"],0,1)) . substr($_COOKIE["profFirstName"],1);
     $titre1 = "Voici la liste de vos elèves";
     $img = "";
-    $titre1 = "Voici la liste de vos élèves";
     $requete = <<<SQL
 SELECT NOM, PRNM, DATE_FORMAT(DATNS, '%d%m') AS DATNS
 FROM ELEVE
@@ -89,19 +88,19 @@ $tgs = count($gs);
     for ($i = 0; $i<$taille; $i++) {
     	$img .= '<tr>';
     		if ($i < $tps) {
-    		 $img .= '<td class="col-sm-4" style="border-right:solid;"><a href="panneladmin.php#recapeleves?id='.$ps[$i]->getId().'" style="color:black;">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4" style="border-right:solid;"><a href="panneladmin.php#modifeleve?id='.$ps[$i]->getId().'" style="color:black;">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td style="border-right:solid;"></td>';
     		}
     		if ($i < $tms) {
-    		 $img .='<td class="col-sm-4" style="border-right:solid;"><a href="panneladmin.php#recapeleves?id=' . $ms[$i]->getId() . '" style="color:black;">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
+    		 $img .='<td class="col-sm-4" style="border-right:solid;"><a href="panneladmin.php#modifeleve?id=' . $ms[$i]->getId() . '" style="color:black;">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td style="border-right:solid;"></td>';
     		}
     		if ($i < $tgs) {
-    		 $img .= '<td class="col-sm-4"><a href="panneladmin.php#recapeleves?id=' . $gs[$i]->getId() . '" style="color:black;">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4"><a href="panneladmin.php#modifeleve?id=' . $gs[$i]->getId() . '" style="color:black;">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td></td>';
