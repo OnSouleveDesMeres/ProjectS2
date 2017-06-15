@@ -6,7 +6,8 @@ class WebPage {
      */
     private $head  = '<!doctype html>
 <html lang="fr">
-  <head>' ;
+  <head>
+  <meta charset="UTF-8">' ;
     /**
      * @var string Texte compris entre <title> et </title>
      */
