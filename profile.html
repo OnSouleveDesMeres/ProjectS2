@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <title>Administration</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style-profile.css">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Accueil</a>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><i class="fa fa-star" aria-hidden="true"></i> Pannel Admin</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown navbar-toggler-right">
+                <button id="btnconnect" class="btn btn-success dropdown-toggle" type="button" id="dropdownconnect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i> Se connecter
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">
+                    <div class="container-fluid">
+                        <form>
+                            <div class="form-group row">
+                                <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="text" placeholder="Utilisateur" required>
+                                <input class="form-control offset-sm-1 col-sm-10 offset-sm-1" type="password" placeholder="Mot de passe" required>
+                                <button class="btn btn-success  offset-sm-1 col-sm-10 offset-sm-1" type="submit">Connexion</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <div style="height:55px;"></div>
+            <h1 class="offset-sm-2">Édition du profil :</h1>
+
+            <div class="form-inline row">
+                <div class="input-group offset-sm-2 col-sm-4">
+                    <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" aria-label="nom" placeholder="Nom" required>
+                </div>
+
+                <div class="col-sm-4">
+                    <center><img src="img/noavatar.png"  alt="photoprofil" width="20%" class="img-circle"></center>
+                    <div style="height:25px;"></div>
+                    <center>
+                        <div class="fileUpload btn btn-primary">
+                            <span></span>
+                            <input type="file" class="upload" />
+                        </div>
+                    </center>
+                </div>
+
+                <div class="input-group col-sm-4">
+                    <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" aria-label="prenom" placeholder="Prénom" required>
+                </div>
+
+            </div>
+
+        </main>
+
+        <footer class="footer footer-inverse bg-inverse text-muted">
+            <div class="row">
+                <span class="offset-sm-1 col-sm-3">© Copyright 2016/2017 <strong>I.U.T Reims-Châlons-Charleville</strong></span>
+                <span class="offset-sm-1 col-sm-3">Chemin des Rouliers / CS30012 / 51687 REIMS CEDEX 2</span>
+                <a class="offset-sm-1 col-sm-3" href="http://www.univ-reims.fr/universite/organisation/organisation,7741,18258.html?&args=v6c8KtUbgtua5qBgA22_BFRfK6yFIeIoj8EcmN3JzmQeiUvNoRi1XBSVepe_gwJU4uFsUzkOJdUDlLJudc8M3g" target="_blank"><strong><i class="fa fa-phone-square" aria-hidden="true"></i> Nous contacter</strong></a>
+            </div>
+        </footer>
+
+        <!-- jQuery first, then Tether, then Bootstrap JS. -->
+        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        <script src="js/javascript.js"></script>
+    </body>
+</html>
