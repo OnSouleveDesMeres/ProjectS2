@@ -79,7 +79,7 @@ $tgs = count($gs);
     for ($i = 0; $i<$taille; $i++) {
     	$img .= '<tr>';
     		if ($i < $tps) {
-    		 $img .= '<td><a href="panneladmin.php#recapeleves?id="' . $ps[$i]->getId() . '">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td><a href="panneladmin.php#recapeleves?id='.$ps[$i]->getId().'">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td></td>';
