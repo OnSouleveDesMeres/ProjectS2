@@ -13,7 +13,7 @@ if (!isset($_cookie["prof"])) {
         $professeur = professeur::createFromID($id);
 
         if ( $professeur != null && $user[0]->getPassword() == hashSet($pass)) {
-            setcookie("profId", $professeur[0]->getId(), time()+(20*60));
+            setcookie("profId", $professeur[0]->getId(), time()+(60*60));
             setcookie("profFirstName", $professeur[0]->getPrenom(), time()+(20*60));
             header("Location: index.php");
         }

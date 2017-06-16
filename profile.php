@@ -44,7 +44,7 @@ $html = <<<HTML
         <h1 class="offset-sm-2">Édition de votre profil :</h1>
         <div style="height:15px;"></div>
 
-        <form>
+        <form name="Profil" method="GET" action="updateProfil.php">
 
             <div class="offset-md-3 col-sm-6">
                 <center><img src="img/noavatar.png"  alt="photoprofil" width="20%" class="img-circle" name="profil" accept="image/*"></center>
@@ -70,7 +70,7 @@ $html = <<<HTML
 
             <div class="input-group offset-sm-3 col-sm-6">
                 <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                <input type="date" name="datens" class="form-control" placeholder="Date de naissance (JJ/MM/AAAA)" value="{$professeur[0]->getDateNaissance()}"required pattern="((?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
+                <input type="date" name="datens" class="form-control" placeholder="Date de naissance (AAAA-MM-JJ)" value="{$professeur[0]->getDateNaissance()}"required pattern="((?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
             </div>
 
             <div class="input-group offset-sm-3 col-sm-6">
@@ -85,9 +85,9 @@ $html = <<<HTML
 
             <div  class="input-group offset-sm-3 col-sm-6">
                 <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" aria-label="adresse" value="{$professeur[0]->getRue()}" placeholder="Adresse" required>
-                <input type="text" name="cp1" class="form-control" placeholder="Code postal" value="{$professeur[0]->getCodePostal()}" pattern="[0-9]{5}" required>
-                <input type="text" class="form-control" aria-label="ville" placeholder="Ville" value="{$professeur[0]->getVille()}" required>
+                <input type="text" name="rue" class="form-control" aria-label="adresse" value="{$professeur[0]->getRue()}" placeholder="Adresse" required>
+                <input type="text" name="cp" class="form-control" placeholder="Code postal" value="{$professeur[0]->getCodePostal()}" pattern="[0-9]{5}" required>
+                <input type="text" name="ville" class="form-control" aria-label="ville" placeholder="Ville" value="{$professeur[0]->getVille()}" required>
             </div>
 
             <div class="input-group">
