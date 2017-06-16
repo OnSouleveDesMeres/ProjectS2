@@ -110,3 +110,11 @@ body {
 .input-group {
     margin-top:25px;
 }
+
+.custom-file .custom-file-control:lang(en)::after {
+  content: "Select file...";
+}
+
+.custom-file .custom-file-control:lang(en)::before {
+  content: "Click me";
+}
