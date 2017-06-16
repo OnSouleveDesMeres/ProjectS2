@@ -34,12 +34,19 @@ $html =<<<HTML
             <div class="card-block">
                 <div class="col-sm-6">
                     <div class="text-left"><i class="fa fa-question-circle fa-2x"></i><span> Type d'école : Publique</span></div>
-                    <div class="text-left"><i class="fa fa-search fa-2x"></i><span> Zone : B</span></div>
-                    <div class="text-left"><i class="fa fa-globe fa-2x"></i><span> Adresse : 1 rue de la Barre</span></div>
-                    <div class="text-left"><i class="fa fa-location-arrow fa-2x"></i><span> Code postal : 08190</span></div>
-                    <div class="text-left"><i class="fa fa-thumb-tack fa-2x"></i><span> Ville : Asfeld</span></div>
-                    <div class="text-left"><i class="fa fa-phone fa-2x"></i><span> Téléphone : 03 24 72 94 66</span></div>
-                    <div class="text-left"><i class="fa fa-envelope fa-2x"></i><span> Email : </span></div>
+                    <div class="text-left"><i class="fa fa-search fa-2x"></i><span> Zone : B
+                    </span></div>
+                    <div class="text-left"><i class="fa fa-globe fa-2x"></i><span> Adresse : 1 rue de la Barre
+                    </span></div>
+                    <div class="text-left"><i class="fa fa-location-arrow fa-2x"></i><span> Code postal : 08190
+                    </span></div>
+                    <div class="text-left"><i class="fa fa-thumb-tack fa-2x"></i><span> Ville : Asfeld
+                    </span></div>
+                    <div class="text-left"><i class="fa fa-phone fa-2x"></i><span> Téléphone : 03 24 72 94 66
+                    <br>
+                    </span></div>
+                    <div class="text-left"><i class="fa fa-envelope fa-2x"></i><span> Email :
+                    </span></div>
                 </div>
             </div>
         </div>
