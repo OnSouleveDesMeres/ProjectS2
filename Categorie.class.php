@@ -58,6 +58,8 @@ SQL;
         $requete =<<<SQL
 SELECT *
 FROM CATEGORIE
+WHERE CAT_IDCATG IS NOT NULL
+ORDER BY libcatg
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);

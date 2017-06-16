@@ -37,7 +37,7 @@ $html = <<<HTML
 			</div> 
 				<div class="collapse" id="collapeNom">
 					<div class="row">
-	  					<form method="post" action="cookieConnection.php">
+	  					<form method="post" action="profile.php">
 	                        <div class="form-group">
 	                            <input type="text" placeholder="Nouveau nom" name="id" required>                                
 	                            <button class="btn btn-primary " type="submit">Valider</button>
@@ -61,7 +61,7 @@ $html = <<<HTML
 			</div>
 				<div class="collapse" id="collapsePrenom">
 					<div class="row">
-	  					<form method="post" action="cookieConnection.php">
+	  					<form method="post" action="profile.php">
 	                        <div class="form-group">
 	                            <input type="text" placeholder="Nouveau prénom" name="id" required>                                
 	                            <button class="btn btn-primary " type="submit">Valider</button>
@@ -85,7 +85,7 @@ $html = <<<HTML
 			</div>
 				<div class="collapse" id="collapseEmail">
 					<div class="row">
-	  					<form method="post" action="cookieConnection.php">
+	  					<form method="post" action="profile.php">
 	                        <div class="form-group">
 	                            <input type="text" placeholder="Nouvel email" name="id" required>                                
 	                            <button class="btn btn-primary " type="submit">Valider</button>
@@ -109,7 +109,7 @@ $html = <<<HTML
 			 </div>
 				<div class="collapse" id="collapseTel">
 					<div class="row">
-	  					<form method="post" action="cookieConnection.php">
+	  					<form method="post" action="profile.php">
 	                        <div class="form-group">
 	                            <input type="text" placeholder="Numéro de téléphone" name="id" required>                                
 	                            <button class="btn btn-primary " type="submit">Valider</button>
@@ -134,7 +134,7 @@ $html = <<<HTML
 		</div>
 				<div class="collapse" id="collapseCP">
 					<div class="row">
-	  					<form method="post" action="cookieConnection.php">
+	  					<form method="post" action="profile.php">
 	                        <div class="form-group">
 	                            <input type="text" placeholder="Nouveau code postal" name="id" required>                                
 	                            <button class="btn btn-primary " type="submit">Valider</button>
@@ -157,7 +157,7 @@ $html = <<<HTML
 			</div>
 				<div class="collapse" id="collapseRue">
 					<div class="row">
-	  					<form method="post" action="cookieConnection.php">
+	  					<form method="post" action=profile.php">
 	                        <div class="form-group">
 	                            <input type="text" placeholder="Nouvelle rue" name="id" required>                                
 	                            <button class="btn btn-primary " type="submit">Valider</button>
@@ -181,7 +181,7 @@ $html = <<<HTML
 			</div>
 				<div class="collapse" id="collapseDatNs">
 					<div class="row">
-	  					<form method="post" action="cookieConnection.php">
+	  					<form method="post" action="profile.php">
 	                        <div class="form-group">
 	                            <input type="text" placeholder="jj/mm/yyyy" name="id" required>                                
 	                            <button class="btn btn-primary " type="submit">Valider</button>
