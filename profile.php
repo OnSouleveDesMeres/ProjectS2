@@ -24,174 +24,82 @@ if (isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])){
 
 
 $html = <<<HTML
-<div class="row">
-	<div class ="card offset-md-4 col-md-4 offset-md-4">
-		<div class="card-header">
-   			Nom
-  		</div>
-		<div class="row">
-		<div class="col-sm-8">{$professeur[0]->getNom()} </div>
-		<div class="text-right col-sm-4">
-			 <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapeNom" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</button>
-			</div>
-			</div> 
-				<div class="collapse" id="collapeNom">
-					<div class="row">
-	  					<form method="post" action="profile.php">
-	                        <div class="form-group">
-	                            <input type="text" placeholder="Nouveau nom" name="id" required>                                
-	                            <button class="btn btn-primary " type="submit">Valider</button>
-	                        </div>
-	                 	</form>
-	   				</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-	<div class ="card offset-md-4 col-md-4 offset-md-4">
-	<div class="card-header">
-   			Prénom
-  		</div>
-		<div class="row">
-		<div class="col-sm-8">{$professeur[0]->getPrenom()} </div>
-		<div class="text-right col-sm-4">
-			 <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapsePrenom" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</button>
-			</div>
-			</div>
-				<div class="collapse" id="collapsePrenom">
-					<div class="row">
-	  					<form method="post" action="profile.php">
-	                        <div class="form-group">
-	                            <input type="text" placeholder="Nouveau prénom" name="id" required>                                
-	                            <button class="btn btn-primary " type="submit">Valider</button>
-	                        </div>
-	                 	</form>
-	   				</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-	<div class ="card offset-md-4 col-md-4 offset-md-4">
-	<div class="card-header">
-   			Email
-  		</div>
-		<div class="row">
-		<div class="col-sm-8">{$professeur[0]->getEmail()} </div>
-		<div class="text-right col-sm-4">
-			 <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseEmail" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</button>
-			</div>
-			</div>
-				<div class="collapse" id="collapseEmail">
-					<div class="row">
-	  					<form method="post" action="profile.php">
-	                        <div class="form-group">
-	                            <input type="text" placeholder="Nouvel email" name="id" required>                                
-	                            <button class="btn btn-primary " type="submit">Valider</button>
-	                        </div>
-	                 	</form>
-	   				</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-	<div class ="card offset-md-4 col-md-4 offset-md-4">
-	<div class="card-header">
-   			Téléphone
-  		</div>
-		<div class="row">
-		<div class="col-sm-8">{$professeur[0]->getNumeroTel()} </div>
-		<div class="text-right col-sm-4">
-			 <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseTel" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</button>
-			 </div>
-			 </div>
-				<div class="collapse" id="collapseTel">
-					<div class="row">
-	  					<form method="post" action="profile.php">
-	                        <div class="form-group">
-	                            <input type="text" placeholder="Numéro de téléphone" name="id" required>                                
-	                            <button class="btn btn-primary " type="submit">Valider</button>
-	                        </div>
-	                 	</form>
-	   				</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-	<div class ="card offset-md-4 col-md-4 offset-md-4">
-	<div class="card-header">
-   			Code Postal
-  		</div>
-  		<div class="row">
-		<div class="col-sm-8">{$professeur[0]->getCodePostal()} </div>
-		<div class="text-right col-sm-4">
-				<button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseCP" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier
-				</button>
-		</div>
-		</div>
-				<div class="collapse" id="collapseCP">
-					<div class="row">
-	  					<form method="post" action="profile.php">
-	                        <div class="form-group">
-	                            <input type="text" placeholder="Nouveau code postal" name="id" required>                                
-	                            <button class="btn btn-primary " type="submit">Valider</button>
-	                        </div>
-	                 	</form>
-	   				</div>
-				</div>			
-		</div>
-	</div>
-	<div class="row">
-	<div class ="card offset-md-4 col-md-4 offset-md-4">
-	<div class="card-header">
-   			Rue
-  		</div>
-		<div class="row">
-		<div class="col-sm-8">{$professeur[0]->getRue()} </div>
-		<div class="text-right col-sm-4">
-			 <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseRue" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</button>
-			</div> 
-			</div>
-				<div class="collapse" id="collapseRue">
-					<div class="row">
-	  					<form method="post" action=profile.php">
-	                        <div class="form-group">
-	                            <input type="text" placeholder="Nouvelle rue" name="id" required>                                
-	                            <button class="btn btn-primary " type="submit">Valider</button>
-	                        </div>
-	                 	</form>
-	   				</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-	<div class ="card offset-md-4 col-md-4 offset-md-4">
-    <div class="card-header">
-   			Date de naissance
-  		</div>
-  			<div class="row">
-			<div class="col-sm-8">{$professeur[0]->getDateNaissance()} </div>
-			<div class="text-right col-sm-4">
-				 <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseDatNs" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier</button>
-			</div>
-			</div>
-				<div class="collapse" id="collapseDatNs">
-					<div class="row">
-	  					<form method="post" action="profile.php">
-	                        <div class="form-group">
-	                            <input type="text" placeholder="jj/mm/yyyy" name="id" required>                                
-	                            <button class="btn btn-primary " type="submit">Valider</button>
-	                        </div>
-	                 	</form>
-	   				</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+<html lang="fr">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <title>Administration</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style-profile.css">
+    </head>
+    <body>
+
+    <main>
+        <div style="height:55px;"></div>
+        <h1 class="offset-sm-2">Édition de votre profil :</h1>
+        <div style="height:15px;"></div>
+
+        <form>
+
+            <div class="offset-md-3 col-sm-6">
+                <center><img src="img/noavatar.png"  alt="photoprofil" width="20%" class="img-circle" name="profil" accept="image/*"></center>
+                <div style="height:25px;"></div>
+                <center>
+                    <div class="fileUpload btn btn-primary">
+                        <input type="file" class="upload">
+                    </div>
+                </center>
+            </div>
+
+            <div class="input-group offset-sm-3 col-sm-6">
+                <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                <input type="text" name="nom" class="form-control" placeholder="Nom" value="{$professeur[0]->getNom()}" required>
+            </div>
+
+
+
+            <div class="input-group offset-sm-3 col-sm-6">
+                <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                <input type="text" name="prenom" class="form-control" placeholder="Prénom" value="{$professeur[0]->getPrenom()}" required>
+            </div>
+
+            <div class="input-group offset-sm-3 col-sm-6">
+                <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                <input type="date" name="datens" class="form-control" placeholder="Date de naissance (JJ/MM/AAAA)" value="{$professeur[0]->getDateNaissance()}"required pattern="((?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">
+            </div>
+
+            <div class="input-group offset-sm-3 col-sm-6">
+                <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                <input type="email" name="email" class="form-control" value="{$professeur[0]->getEmail()}" placeholder="unemail@exemple.com">
+            </div>
+
+            <div class="input-group offset-sm-3 col-sm-6">
+                <span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                <input type="tel"  name="telephone" class="form-control" value="{$professeur[0]->getNumeroTel()}" placeholder="N° de téléphone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$" required>
+            </div>
+
+            <div  class="input-group offset-sm-3 col-sm-6">
+                <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" aria-label="adresse" value="{$professeur[0]->getRue()}" placeholder="Adresse" required>
+                <input type="text" name="cp1" class="form-control" placeholder="Code postal" value="{$professeur[0]->getCodePostal()}" pattern="[0-9]{5}" required>
+                <input type="text" class="form-control" aria-label="ville" placeholder="Ville" value="{$professeur[0]->getVille()}" required>
+            </div>
+
+            <div class="input-group">
+                <button id="editeleve" type="submit" class="btn btn-success offset-sm-4 col-sm-4">Valider</button>
+            </div>
+
+            <div style="height:15px;"></div>
+        </form>
+
+    </main>-
+
+
 HTML;
 
 		$html .= '</div>';
