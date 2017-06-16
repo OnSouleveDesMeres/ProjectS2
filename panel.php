@@ -10,6 +10,7 @@ require_once 'webpage.class.php';
 require_once 'navbar.php';
 require_once 'footer.php';
 require_once 'Eleve.class.php';
+require_once 'Categorie.class.php';
 
 if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"])){
 
@@ -25,7 +26,15 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
     $liste = '';
     foreach ($students as $eleve){
 
-        $liste .= "<tr><td>{$eleve->getId()}</td><td>{$eleve->getNom()}</td><td>{$eleve->getPrenom()}</td><td>{$eleve->getVille()}</td><td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td><td>{$eleve->getDateNaissance()}</td><td><a href='panel.php#modifeleve?id={$eleve->getId()}'>Modifier</a></td><td><a href='panel.php#modifeleve?delete={$eleve->getId()}'>Supprimer</a></td></tr>";
+        $liste .= "<tr><td>{$eleve->getId()}</td><td>{$eleve->getNom()}</td><td>{$eleve->getPrenom()}</td><td>{$eleve->getVille()}</td><td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td><td>{$eleve->getDateNaissance()}</td><td><a href='eleve.php?id={$eleve->getId()}'>Modifier</a></td><td><a href='panel.php?deleteStudent={$eleve->getId()}'>Supprimer</a></td></tr>";
+
+    }
+
+    $observables = Observable::getAll();
+    $listeObs = '';
+    foreach ($observables as $obs){
+
+        $listeObs .= "<tr><td>{$obs->getId()}</td><td>{$obs->getIdCatg()}</td><td>{$obs->getNom()}</td><td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
 
     }
 
@@ -46,12 +55,10 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
         <ul class="nav nav-pills flex-column" id="tabprincipale" role="tablist">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#recapeleve" role="tab" aria-controls="Récap des élèves">Récapitulatif des élèves</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutereleve" role="tab" aria-controls="Ajouter un élève">Ajouter un élève</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#modifeleve" role="tab" aria-controls="Modifier un élève">Modifier un élève</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recapobservable" role="tab" aria-controls="Modifier un élève">Récapitulatif des observables</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajouterobservable" role="tab" aria-controls="Ajouter une observable">Ajouter une observable</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#modifobservable" role="tab" aria-controls="Modifier un élève">Modifier une observable</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutereleve" role="tab" aria-controls="Ajouter un élève">Ajouter un élève</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#modifeleve" role="tab" aria-controls="Modifier un élève">Modifier un élève</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Messages</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recapobservable" role="tab" aria-controls="Modifier un élève">Récapitulatif des observables</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajouterobservable" role="tab" aria-controls="Ajouter une observable">Ajouter une observable</a></li>
         </ul>
 
     </nav>
@@ -87,6 +94,8 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
                                     <th>Email</th>
                                     <th>Numéro téléphone</th>
                                     <th>Date de naissance</th>
+                                    <th>Modifier</th>
+                                    <th>Supprimer</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -161,8 +170,44 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
                 </section>
             </div>
             <!---------------------------------------------------------->
-            <div class="tab-pane" id="modifeleve" role="tabpanel">
-                <h1>Hello</h1>
+            <div class="tab-pane" id="recapobservable" role="tabpanel">
+                <div class="tab-pane active" id="recapobservable" role="tabpanel">
+
+                <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
+                    <button type="button" class="btn btn-secondary">Trier par...</button>
+                    <button type="button" class="btn btn-secondary">Trier par...</button>
+                    <button type="button" class="btn btn-secondary">Trier par...</button>
+                    </div>
+                </center>
+
+                <section class="row text-center placeholders">
+                    <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
+                        <table class="table">
+                            <thead class="thead-inverse  text-center">
+                                <tr>
+                                    <th>id</th>
+                                    <th>id catégorie</th>
+                                    <th>Nom observable</th>
+                                    <th>Modifier</th>
+                                    <th>Supprimer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {$listeObs}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            </div>
+            <!---------------------------------------------------------->
+            <div class="tab-pane" id="settings" role="tabpanel">
+            </div>
+            <!---------------------------------------------------------->
+            <div class="tab-pane" id="settings" role="tabpanel">
+            </div>
+            <!---------------------------------------------------------->
+            <div class="tab-pane" id="settings" role="tabpanel">
             </div>
             <!---------------------------------------------------------->
             <div class="tab-pane" id="settings" role="tabpanel">
