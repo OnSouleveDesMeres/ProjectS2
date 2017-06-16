@@ -11,8 +11,67 @@ require_once 'navbar.php';
 require_once 'footer.php';
 require_once 'Eleve.class.php';
 require_once 'Categorie.class.php';
+require_once 'Insert.class.php';
+require_once 'myPDO.class.php';
 
 if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"])){
+if (isset($_GET) && !empty($_GET)) {
+    if (isset($_GET["deleteStudent"]) && !empty($_GET["deleteStudent"])) {
+        $requete = <<<SQL
+DELETE FROM ELEVE WHERE IDELEVE = ?
+DELETE FROM VALIDATION WHERE IDELEVE = ?
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->execute(array($_GET["deleteStudent"]));
+
+    }
+    if (isset($_GET["deleteObs"]) && !empty($_GET["deleteObs"])) {
+        $requete = <<<SQL
+DELETE FROM OBSERVABLE WHERE IDOBS = ?
+DELETE FROM VALIDATION WHERE IDOBS = ?
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requeteObs);
+
+        $pdo->execute(array($_GET["deleteObs"]));
+
+    }
+    if (isset($_GET["deleteCatg"]) && !empty($_GET["deleteCatg"])) {
+        $requete = <<<SQL
+DELETE FROM CATEGORIE WHERE IDCATG = ?
+DELETE FROM OBSERVABLE WHERE IDCATG = ?
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->execute(array($_GET["deleteCatg"]));
+
+    }
+}
+if (isset($_POST) && !empty($_POST)){
+    if (isset($_POST["nome"]) && !empty($_POST["nome"]) && isset($_POST["prenome"]) && !empty($_POST["prenome"])
+        && isset($_POST["datense"]) && !empty($_POST["datense"]) && isset($_POST["classe"]) && !empty($_POST["classe"])
+        && isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["ville1"]) && !empty($_POST["ville1"])
+        && isset($_POST["cp1"]) && !empty($_POST["cp1"]) && isset($_POST["ad1"]) && !empty($_POST["ad1"])
+        && isset($_POST["telephone"]) && !empty($_POST["telephone"])){
+
+        Insert::insertIntoStudent($_POST["classe"], $_POST["nome"], $_POST["prenome"], $_POST["email"], $_POST["telephone"], $_POST["ville1"], $_POST["cp1"], $_POST["ad1"], $_POST["datnse"], $_POST["email2"], $_POST["telephone2"], $_POST["ville2"], $_POST["cp2"], $_POST["ad2"]);
+
+
+    }
+    if (isset($_POST["idCatg"]) && !empty($_POST["idCatg"]) && isset($_POST["nomObs"]) && !empty($_POST["nomObs"])){
+
+        Insert::insertIntoObservable($_POST["idCatg"], $_POST["nomObs"]);
+
+    }
+    if (isset($_POST["idCatgSup"]) && !empty($_POST["idCatgSup"]) && isset($_POST["nomCatg"]) && !empty($_POST["nomCatg"])){
+
+        Insert::insertIntoCategorie($_POST["idCatgSup"], $_POST["nomCatg"]);
+
+    }
+}
 
     $html = new WebPage('Panel administratif');
     $html->appendToHead('<link rel="icon" type="image/png" href="img/favicon.png" />');
@@ -26,7 +85,7 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
     $liste = '';
     foreach ($students as $eleve){
 
-        $liste .= "<tr><td>{$eleve->getId()}</td><td>{$eleve->getNom()}</td><td>{$eleve->getPrenom()}</td><td>{$eleve->getVille()}</td><td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td><td>{$eleve->getDateNaissance()}</td><td><a href='eleve.php?id={$eleve->getId()}'>Modifier</a></td><td><a href='panel.php?deleteStudent={$eleve->getId()}'>Supprimer</a></td></tr>";
+        $liste .= "<tr><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getId()}</a></td><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getNom()}</a></td><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getPrenom()}</a></td><td>{$eleve->getVille()}</td><td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td><td>{$eleve->getDateNaissance()}</td><td><a href='profileEleve.php?id={$eleve->getId()}'>Editer</a></td><td><a href='panel.php?deleteStudent={$eleve->getId()}'>Supprimer</a></td></tr>";
 
     }
 
@@ -34,8 +93,16 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
     $listeObs = '';
     foreach ($observables as $obs){
 
-        $listeObs .= "<tr><td>{$obs->getId()}</td><td>{$obs->getIdCatg()}</td><td>{$obs->getNom()}</td><td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
+        $listeObs .= "<tr><td>{$obs->getId()}</td><td>{$obs->getIdCatg()}</td><td>{$obs->getNom()}</td><td><a href='eleve.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
 
+    }
+
+    $listeCatg = '';
+    $tabCatg = '';
+    $catg = Categorie::getAll();
+    foreach ($catg as $category){
+        $listeCatg .= "<option value='{$category->getId()}'>{$category->getNom()}</option>";
+        $tabCatg .= "<tr><td>{$category->getId()}</td><td>{$category->getIdSup()}</td><td>{$category->getNom()}</td><td><a href='categorie.php?id={$category->getId()}'>Modifier</a></td><td><a href='panel.php?deleteCatg={$category->getId()}'>Supprimer</a></td></tr>";
     }
 
     $page =<<<HTML
@@ -57,21 +124,21 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutereleve" role="tab" aria-controls="Ajouter un élève">Ajouter un élève</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recapobservable" role="tab" aria-controls="Modifier un élève">Récapitulatif des observables</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajouterobservable" role="tab" aria-controls="Ajouter une observable">Ajouter une observable</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recapobservable" role="tab" aria-controls="Modifier un élève">Récapitulatif des observables</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajouterobservable" role="tab" aria-controls="Ajouter une observable">Ajouter une observable</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recapcatg" role="tab" aria-controls="Modifier un élève">Récapitulatif des catégories</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutcatg" role="tab" aria-controls="Ajouter une observable">Ajouter une catégorie</a></li>
         </ul>
 
     </nav>
 
     <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
         <div style="height:55px;"></div>
-        <h1>Affichage des élèves :</h1>
-
-        <div style="height:25px;"></div>
 
         <div class="tab-content">
             <!---------------------------------------------------------->
             <div class="tab-pane active" id="recapeleve" role="tabpanel">
+                <h1>Affichage des élèves :</h1>
+        
+                <div style="height:25px;"></div>
 
                 <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
                     <button type="button" class="btn btn-secondary">Trier par...</button>
@@ -94,7 +161,7 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
                                     <th>Email</th>
                                     <th>Numéro téléphone</th>
                                     <th>Date de naissance</th>
-                                    <th>Modifier</th>
+                                    <th>Editer profil</th>
                                     <th>Supprimer</th>
                                 </tr>
                             </thead>
@@ -107,22 +174,26 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
             </div>
             <!---------------------------------------------------------->
             <div class="tab-pane" id="ajoutereleve" role="tabpanel">
+                <h1>Ajouter un élève :</h1>
+        
+                <div style="height:25px;"></div>
+
                 <section class="row text-center placeholders">
                     <div class="offset-sm-2 col-sm-8 offset-sm-2 placeholder">
-                        <form action="paneladmin.php" method="post">
+                        <form action="panel.php" method="post">
 
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <input type="text" name="nom" class="form-control" placeholder="Nom" required>
+                                    <input type="text" name="nome" class="form-control" placeholder="Nom" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="text" name="prenom" class="form-control" placeholder="Prénom" required>
+                                    <input type="text" name="prenome" class="form-control" placeholder="Prénom" required>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="date" name="datens" class="form-control" placeholder="Date de naissance (JJ/MM/AAAA)" required pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}">
+                                    <input type="date" name="datense" class="form-control" placeholder="Date de naissance (JJ/MM/AAAA)" required pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}">
                                 </div>
                                 <div class="col-sm-6">
-                                    <select class="custom-select" required>
+                                    <select class="custom-select" name="classe" required>
                                         <option value="" selected>Choisissez une classe</option>
                                         <option value="1">Petite section</option>
                                         <option value="2">Moyenne section</option>
@@ -130,18 +201,18 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
                                     </select>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h4><label for="parentsepare" class="col-6 col-form-label">Parent 1</label></h4>
+                                    <h4><label for="parentsepare" class="col-form-label">Parent 1</label></h4>
                                     <input type="email" name="email" class="form-control" placeholder="unemail@exemple.com">
                                 </div>
                                 <div class="col-sm-6">
-                                    <h4><label for="parentsepare" class="col-6 col-form-label">(Parent 2 si séparé)</label></h4>
-                                    <input type="email" name="email" class="form-control" placeholder="unemail@exemple.com">
+                                    <h4><label for="parentsepare" class="col-form-label">(Parent 2 si séparé)</label></h4>
+                                    <input type="email" name="email2" class="form-control" placeholder="unemail@exemple.com">
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="tel"  name="telephone" class="form-control" placeholder="N° de téléphone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="tel"  name="telephone" class="form-control" placeholder="N° de téléphone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$">
+                                    <input type="tel"  name="telephone2" class="form-control" placeholder="N° de téléphone" pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$">
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="text" name="ville1" class="form-control" placeholder="Ville" required>
@@ -171,46 +242,129 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
             </div>
             <!---------------------------------------------------------->
             <div class="tab-pane" id="recapobservable" role="tabpanel">
+                <h1>Affichage des observables :</h1>
+        
+                <div style="height:25px;"></div>
+
                 <div class="tab-pane active" id="recapobservable" role="tabpanel">
 
-                <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
-                    <button type="button" class="btn btn-secondary">Trier par...</button>
-                    <button type="button" class="btn btn-secondary">Trier par...</button>
-                    <button type="button" class="btn btn-secondary">Trier par...</button>
-                    </div>
-                </center>
+                    <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        </div>
+                    </center>
+    
+                    <section class="row text-center placeholders">
+                        <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
+                            <table class="table">
+                                <thead class="thead-inverse  text-center">
+                                    <tr>
+                                        <th>id</th>
+                                        <th>id catégorie</th>
+                                        <th>Nom observable</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {$listeObs}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!---------------------------------------------------------->
+            <div class="tab-pane" id="ajouterobservable" role="tabpanel">
+                <h1>Ajouter une observable :</h1>
+        
+                <div style="height:25px;"></div>
 
                 <section class="row text-center placeholders">
-                    <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
-                        <table class="table">
-                            <thead class="thead-inverse  text-center">
-                                <tr>
-                                    <th>id</th>
-                                    <th>id catégorie</th>
-                                    <th>Nom observable</th>
-                                    <th>Modifier</th>
-                                    <th>Supprimer</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {$listeObs}
-                            </tbody>
-                        </table>
+                    <div class="offset-sm-2 col-sm-8 offset-sm-2 placeholder">
+                        <form action="panel.php" method="post">
+
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <select class="custom-select" name="idCatg" required>
+                                        <option value="" selected>Choisissez une catégorie</option>
+                                        {$listeCatg}
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" name="nomObs" class="form-control" placeholder="Nom" required>
+                                </div>
+                            </div>
+                            <div>
+                                <button id="sendstudent" type="submit" class="btn btn-primary">Ajouter l'observable</button>
+                            </div>
+                        </form>
                     </div>
                 </section>
             </div>
+            <!---------------------------------------------------------->
+            <div class="tab-pane" id="recapcatg" role="tabpanel">
+                <h1>Affichage des observables :</h1>
+        
+                <div style="height:25px;"></div>
+
+                <div class="tab-pane active" id="recapobservable" role="tabpanel">
+
+                    <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        </div>
+                    </center>
+    
+                    <section class="row text-center placeholders">
+                        <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
+                            <table class="table">
+                                <thead class="thead-inverse  text-center">
+                                    <tr>
+                                        <th>id</th>
+                                        <th>id catégorie mère</th>
+                                        <th>Nom catégorie</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {$tabCatg}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
             </div>
             <!---------------------------------------------------------->
-            <div class="tab-pane" id="settings" role="tabpanel">
-            </div>
-            <!---------------------------------------------------------->
-            <div class="tab-pane" id="settings" role="tabpanel">
-            </div>
-            <!---------------------------------------------------------->
-            <div class="tab-pane" id="settings" role="tabpanel">
-            </div>
-            <!---------------------------------------------------------->
-            <div class="tab-pane" id="settings" role="tabpanel">
+            <div class="tab-pane" id="ajoutcatg" role="tabpanel">
+                <h1>Ajouter une catégorie :</h1>
+        
+                <div style="height:25px;"></div>
+
+                <section class="row text-center placeholders">
+                    <div class="offset-sm-2 col-sm-8 offset-sm-2 placeholder">
+                        <form action="panel.php" method="post">
+
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <select class="custom-select" name="idCatgSup" required>
+                                        <option value="" selected>Choisissez une catégorie mère</option>
+                                        {$listeCatg}
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" name="nomCatg" class="form-control" placeholder="Nom" required>
+                                </div>
+                            </div>
+                            <div>
+                                <button id="sendstudent" type="submit" class="btn btn-primary">Ajouter la catégorie</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
             </div>
             <!---------------------------------------------------------->
         </div>

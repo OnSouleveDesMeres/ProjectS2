@@ -25,7 +25,31 @@ SQL;
     public static function insertIntoProfessor($IDSUP, $NOM, $PRNM, $EMAIL, $NUMTEL, $VILLE, $CP, $RUE, $DATNS){
 
         $requete =<<<SQL
-INSERT INTO ELEVE (PRO_IDPROF, NOM, PRNM, EMAIL, NUMTEL, VILLE, CP, RUE, DATNS) VALUES ('{$IDSUP}', '{$NOM}', '{$PRNM}', '{$EMAIL}', '{$NUMTEL}', '{$VILLE}', '{$CP}', '{$RUE}', STR_TO_DATE('{$DATNS}','%m/%d/%Y'));
+INSERT INTO PROFESSEUR (PRO_IDPROF, NOM, PRNM, EMAIL, NUMTEL, VILLE, CP, RUE, DATNS) VALUES ('{$IDSUP}', '{$NOM}', '{$PRNM}', '{$EMAIL}', '{$NUMTEL}', '{$VILLE}', '{$CP}', '{$RUE}', STR_TO_DATE('{$DATNS}','%m/%d/%Y'));
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->execute(array());
+
+    }
+
+    public static function insertIntoObservable($idCatg, $nom){
+
+        $requete =<<<SQL
+INSERT INTO OBSERVABLE (IDCATG, LIBOBS) VALUES ('{$idCatg}', '{$nom}');
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->execute(array());
+
+    }
+
+    public static function insertIntoCategorie($idCatgSup, $nom){
+
+        $requete =<<<SQL
+INSERT INTO CATEGORIE (CAT_IDCATG, LIBCATG) VALUES ('{$idCatgSup}', '{$nom}');
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
