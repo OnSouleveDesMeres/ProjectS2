@@ -17,13 +17,8 @@ $w->appendJsURL('https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.m
 $w->appendJsURL('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"');
 $w->appendJsURL('js/javascript.js');
 
-if (isset($_GET['id'])) {
+if(isset($_GET['id']) && !empty($_GET['id']))
 
-$id = $_GET['id'];
-
-$eleve = Eleve::createFromId($id);
-
-$categories =  Categorie::getAllWitoutCatSup();
 
 $html = <<<HTML
 	<div class="row">
@@ -42,38 +37,23 @@ $html = <<<HTML
 			  <li class="list-group-item">Ville 2 : {$eleve[0]->getVille2()}</li>
 			  <li class="list-group-item">Code postal 2: {$eleve[0]->getCodePostal2()}</li>
 			  <li class="list-group-item">Rue 2: {$eleve[0]->getRue2()}</li>
-			  <li class="text-center" style="list-style:none;"><a href="profileEleve.php?id=' . $id . '"><button class="btn btn-primary">Editer le profil de l&apos;élève</button></a></li> 
+			  <li class="text-center" style="list-style:none;"><a href="profileEleve.php?id={$id}"><button class="btn btn-primary">Editer le profil de l&apos;élève</button></a></li> 
 			</ul>
 		</div>
 		<div id="card3" class = "offset-sm-1 card" style="margin-top:50px;">
-			<div class="form-group conainer" style="margin:10px;">
+			<div class="form-group container" style="margin:10px;">
+                <form action="eleve.php">
+                    {$content}{$liste}
+                </form>
+            </div>
+        </div>
+    </div>
 HTML;
-$html .= '
-			<form name="Categorie" method="GET" action="eleve.php">				
-			    <label>Catégories d&apos;observables :</label>				    		    
-			    <select class="form-control" name="idCatg">
-';
 
-
-for ($i=0; $i < count($categories) ; $i++) { 
-	$html .= "<option value=" . $categories[$i]->getId() .">" . $categories[$i]->getNom() . "</option>";
-}
-
-
-$html .= '			    
-			    </select>
-			    <input style="display:none;" class="form-control" name="id" value="' . $id .'"</input>
-			    <button style="margin-top:10px;"type="submit" class="btn btn-primary">Choisir</button>
-			    </form>
-			</div>
-		</div>';
 
 }
 else {
-	$html = 'Elève introuvable';
-}
-if (isset($_GET['idCatg'])) {
-	$cat = $_GET['idCatg'];
+	$html = '<div class="col-sm-12"><div class="offset-md-3 col-md-6 offset-md-3 col-sm-12"><div class="alert alert-danger text-center">Erreur, aucun élève ne correspond à la recherche, veuillez retourner à la page précédente !</div></div></div>';
 }
 
 
@@ -81,4 +61,14 @@ $html .= '</div>';
 
 $w->appendContent($html);
 $w->appendContent(footer());
+$w->appendJs('jQuery(function() {
+    jQuery("#category").change(function() {
+        this.form.submit();
+    });
+});');
+$w->appendJs('jQuery(function() {
+    jQuery("#observable").change(function() {
+        this.form.submit();
+    });
+});');
 echo ($w->toHTML());
