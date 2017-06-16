@@ -14,12 +14,11 @@ require_once 'Categorie.class.php';
 require_once 'Insert.class.php';
 require_once 'myPDO.class.php';
 
-if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"])){
+if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])){
 if (isset($_GET) && !empty($_GET)) {
     if (isset($_GET["deleteStudent"]) && !empty($_GET["deleteStudent"])) {
         $requete = <<<SQL
 DELETE FROM ELEVE WHERE IDELEVE = ?
-DELETE FROM VALIDATION WHERE IDELEVE = ?
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
@@ -30,10 +29,9 @@ SQL;
     if (isset($_GET["deleteObs"]) && !empty($_GET["deleteObs"])) {
         $requete = <<<SQL
 DELETE FROM OBSERVABLE WHERE IDOBS = ?
-DELETE FROM VALIDATION WHERE IDOBS = ?
 SQL;
 
-        $pdo = myPDO::getInstance()->prepare($requeteObs);
+        $pdo = myPDO::getInstance()->prepare($requete);
 
         $pdo->execute(array($_GET["deleteObs"]));
 
@@ -41,7 +39,6 @@ SQL;
     if (isset($_GET["deleteCatg"]) && !empty($_GET["deleteCatg"])) {
         $requete = <<<SQL
 DELETE FROM CATEGORIE WHERE IDCATG = ?
-DELETE FROM OBSERVABLE WHERE IDCATG = ?
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
@@ -85,7 +82,7 @@ if (isset($_POST) && !empty($_POST)){
     $liste = '';
     foreach ($students as $eleve){
 
-        $liste .= "<tr><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getId()}</a></td><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getNom()}</a></td><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getPrenom()}</a></td><td>{$eleve->getVille()}</td><td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td><td>{$eleve->getDateNaissance()}</td><td><a href='profileEleve.php?id={$eleve->getId()}'>Editer</a></td><td><a href='panel.php?deleteStudent={$eleve->getId()}'>Supprimer</a></td></tr>";
+        $liste .= "<tr><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getNom()}</a></td><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getPrenom()}</a></td><td>{$eleve->getVille()}</td><td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td><td>{$eleve->getDateNaissance()}</td><td><a href='profileEleve.php?id={$eleve->getId()}'>Editer</a></td><td><a href='panel.php?deleteStudent={$eleve->getId()}'>Supprimer</a></td></tr>";
 
     }
 
@@ -93,7 +90,7 @@ if (isset($_POST) && !empty($_POST)){
     $listeObs = '';
     foreach ($observables as $obs){
 
-        $listeObs .= "<tr><td>{$obs->getId()}</td><td>{$obs->getIdCatg()}</td><td>{$obs->getNom()}</td><td><a href='eleve.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
+        $listeObs .= "<tr><td>{$obs->getNom()}</td><td><a href='eleve.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
 
     }
 
@@ -102,7 +99,7 @@ if (isset($_POST) && !empty($_POST)){
     $catg = Categorie::getAll();
     foreach ($catg as $category){
         $listeCatg .= "<option value='{$category->getId()}'>{$category->getNom()}</option>";
-        $tabCatg .= "<tr><td>{$category->getId()}</td><td>{$category->getIdSup()}</td><td>{$category->getNom()}</td><td><a href='categorie.php?id={$category->getId()}'>Modifier</a></td><td><a href='panel.php?deleteCatg={$category->getId()}'>Supprimer</a></td></tr>";
+        $tabCatg .= "<tr><td>{$category->getNom()}</td><td><a href='categorie.php?id={$category->getId()}'>Modifier</a></td><td><a href='panel.php?deleteCatg={$category->getId()}'>Supprimer</a></td></tr>";
     }
 
     $page =<<<HTML
@@ -114,7 +111,7 @@ if (isset($_POST) && !empty($_POST)){
         <center>
             <img src="img/noavatar.png"  alt="photoprofil" width="50%" class="img-circle">
             <div style="height:25px;"></div>
-            <button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Éditer le profil</button>
+            <a href="profile.php"><button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Éditer le profil</button></a>
         </center>
 
         <div style="height:25px;"></div>
@@ -152,7 +149,6 @@ if (isset($_POST) && !empty($_POST)){
                         <table class="table">
                             <thead class="thead-inverse  text-center">
                                 <tr>
-                                    <th>id</th>
                                     <th>Nom</th>
                                     <th>Prénom</th>
                                     <th>Ville</th>
@@ -260,8 +256,6 @@ if (isset($_POST) && !empty($_POST)){
                             <table class="table">
                                 <thead class="thead-inverse  text-center">
                                     <tr>
-                                        <th>id</th>
-                                        <th>id catégorie</th>
                                         <th>Nom observable</th>
                                         <th>Modifier</th>
                                         <th>Supprimer</th>
@@ -323,8 +317,6 @@ if (isset($_POST) && !empty($_POST)){
                             <table class="table">
                                 <thead class="thead-inverse  text-center">
                                     <tr>
-                                        <th>id</th>
-                                        <th>id catégorie mère</th>
                                         <th>Nom catégorie</th>
                                         <th>Modifier</th>
                                         <th>Supprimer</th>
