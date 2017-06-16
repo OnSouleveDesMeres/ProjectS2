@@ -88,19 +88,19 @@ $tgs = count($gs);
     for ($i = 0; $i<$taille; $i++) {
     	$img .= '<tr>';
     		if ($i < $tps) {
-    		 $img .= '<td class="col-sm-4" style="border-right:solid;"><a href="panneladmin.php#modifeleve?id='.$ps[$i]->getId().'" style="color:black;">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4" style="border-right:solid;"><a href="eleve.php?id='.$ps[$i]->getId().'" style="color:black;">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td style="border-right:solid;"></td>';
     		}
     		if ($i < $tms) {
-    		 $img .='<td class="col-sm-4" style="border-right:solid;"><a href="panneladmin.php#modifeleve?id=' . $ms[$i]->getId() . '" style="color:black;">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
+    		 $img .='<td class="col-sm-4" style="border-right:solid;"><a href="eleve.php?id=' . $ms[$i]->getId() . '" style="color:black;">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td style="border-right:solid;"></td>';
     		}
     		if ($i < $tgs) {
-    		 $img .= '<td class="col-sm-4"><a href="panneladmin.php#modifeleve?id=' . $gs[$i]->getId() . '" style="color:black;">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4"><a href="eleve.php?id=' . $gs[$i]->getId() . '" style="color:black;">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td></td>';
