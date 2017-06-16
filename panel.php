@@ -103,7 +103,7 @@ if (isset($_POST) && !empty($_POST)){
     }
 
     $page =<<<HTML
-<div class="row col-sm-12">
+<div class="col-sm-12">
     <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
 
         <div style="height:25px;"></div>
@@ -136,17 +136,15 @@ if (isset($_POST) && !empty($_POST)){
                 <h1>Affichage des élèves :</h1>
         
                 <div style="height:25px;"></div>
-
-                <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
-                    <button type="button" class="btn btn-secondary">Trier par...</button>
-                    <button type="button" class="btn btn-secondary">Trier par...</button>
-                    <button type="button" class="btn btn-secondary">Trier par...</button>
+                    <div style="overflow-x:auto;" class="btn-group offset-sm-4" role="group" aria-label="bouton trier par...">
+                        <button id="btntrier" type="button" class="btn btn-secondary">Trier par...</button>
+                        <button id="btntrier" type="button" class="btn btn-secondary">Trier par...</button>
+                        <button id="btntrier" type="button" class="btn btn-secondary">Trier par...</button>
+                        <input id="searchbar" type="text" class="search form-control" placeholder="Que recherchez-vous?">
                     </div>
-                </center>
-
                 <section class="row text-center placeholders">
-                    <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
-                        <table class="table">
+                    <div style="overflow-x:auto;" class="col-sm-12 placeholder">
+                    <table class="table table-hover results">
                             <thead class="thead-inverse  text-center">
                                 <tr>
                                     <th>Nom</th>
@@ -159,6 +157,9 @@ if (isset($_POST) && !empty($_POST)){
                                     <th>Date de naissance</th>
                                     <th>Editer profil</th>
                                     <th>Supprimer</th>
+                                </tr>
+                                <tr class="alert-warning no-result">
+                                    <td colspan="10"><i class="fa fa-warning"></i> Non trouvé</td>
                                 </tr>
                             </thead>
                             <tbody>

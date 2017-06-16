@@ -169,3 +169,26 @@ select, .custom-select {
     margin-bottom: 25px;
     width:100%;
 }
+
+#btntrier {
+    margin-bottom: 50px;
+}
+
+.results tr[visible='false'],
+.no-result{
+    display:none;
+}
+
+.results tr[visible='true']{
+    display:table-row;
+}
+
+.counter{
+    color:#ccc;
+    height: 38px;
+}
+
+#searchbar {
+    height: 38px;
+}
+
