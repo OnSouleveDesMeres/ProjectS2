@@ -92,6 +92,7 @@
                                             <th>Prénom</th>
                                             <th>Ville</th>
                                             <th>Code Postal</th>
+                                            <th>Édition</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -115,6 +116,29 @@
                                             <td>the Bird</td>
                                             <td>Reims</td>
                                             <td>51100</td>
+                                            <td>
+                                                <a href="#" data-toggle="modal" data-target="#supprimer">Supprimer</a>
+
+                                                <div class="modal fade" id="supprimer" tabindex="-1" role="dialog" aria-labelledby="supprimereleve" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Suppression :</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Voulez vous vraiment supprimer %eleve%
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary">Oui</button>
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
