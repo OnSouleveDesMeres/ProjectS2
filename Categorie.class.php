@@ -58,6 +58,34 @@ SQL;
         $requete =<<<SQL
 SELECT *
 FROM CATEGORIE
+ORDER BY libcatg
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->setFetchMode(PDO::FETCH_CLASS, 'Categorie');
+
+        $res = $pdo->execute(array());
+
+        if ($res){
+
+            $datas = $pdo->fetchAll();
+            return $datas;
+
+        }
+        else{
+
+            throw new Exception('Erreur, aucune catégorie ne peut être trouvée');
+
+        }
+
+    }
+
+    public static function getAllWitoutCatSup(){
+
+        $requete =<<<SQL
+SELECT *
+FROM CATEGORIE
 WHERE CAT_IDCATG IS NOT NULL
 ORDER BY libcatg
 SQL;

@@ -23,7 +23,7 @@ $id = $_GET['id'];
 
 $eleve = Eleve::createFromId($id);
 
-$categories =  Categorie::getAll();
+$categories =  Categorie::getAllWitoutCatSup();
 
 $html = <<<HTML
 	<div class="row">
@@ -42,6 +42,7 @@ $html = <<<HTML
 			  <li class="list-group-item">Ville 2 : {$eleve[0]->getVille2()}</li>
 			  <li class="list-group-item">Code postal 2: {$eleve[0]->getCodePostal2()}</li>
 			  <li class="list-group-item">Rue 2: {$eleve[0]->getRue2()}</li>
+			  <li class="text-center" style="list-style:none;"><a href="profileEleve.php?id=' . $id . '"><button class="btn btn-primary">Editer le profil de l&apos;élève</button></a></li> 
 			</ul>
 		</div>
 		<div id="card3" class = "offset-sm-1 card" style="margin-top:50px;">
@@ -65,8 +66,7 @@ $html .= '
 			    <button style="margin-top:10px;"type="submit" class="btn btn-primary">Choisir</button>
 			    </form>
 			</div>
-		</div>
-	</div>';
+		</div>';
 
 }
 else {
@@ -75,6 +75,9 @@ else {
 if (isset($_GET['idCatg'])) {
 	$cat = $_GET['idCatg'];
 }
+
+
+$html .= '</div>';
 
 $w->appendContent($html);
 $w->appendContent(footer());
