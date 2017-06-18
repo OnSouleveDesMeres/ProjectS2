@@ -24,12 +24,15 @@ if (isset($_COOKIE["profId"])) {
 SQL;
         $db->query($requete);
         setcookie("profFirstName", $prenom, time()+20*60);
+        setcookie("profId", $_COOKIE["profId"], time()+20*60);
     header("Location: index.php");
-    setcookie("profFirstName", $professeur[0]->getPrenom(), time()+(20*60));        
     }
     else {
-    header("Location: index.php");
+        header("Location: index.php");
     }
     
+}
+else {
+    header("Location: index.php");
 }
     

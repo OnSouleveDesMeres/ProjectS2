@@ -16,6 +16,12 @@ $db = myPDO::getInstance();
 
 if(isset($_POST) && !empty($_POST)){
 
+    var_dump($_POST);
+
+    if(isset($_POST['email']) && !empty($_POST['email'])){
+        header("Location: sendMail.php?mailTo={$_POST['email']}");
+    }
+
     $superior = null;
 
     if ($_POST["sup"] != null){
@@ -50,7 +56,7 @@ $html->appendContent("<form name='addToBD' method='post' action='insertProfessor
 <p>Professeur supérieur : {$select}</p>
 <p>Nom : <input name='nom' type='text'></p>
 <p>Prenom : <input name='prenom' type='text'></p>
-<p>email : <input name='nom' type='text'></p>
+<p>email : <input name='email' type='text'></p>
 <p>numTel : <input name='nom' type='text'></p>
 <p>ville : <input name='nom' type='text'></p>
 <p>cp : <input name='nom' type='text'></p>

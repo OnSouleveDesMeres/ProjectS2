@@ -82,8 +82,12 @@ if (isset($_POST) && !empty($_POST)){
     $liste = '';
     foreach ($students as $eleve){
 
-        $liste .= "<tr><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getNom()}</a></td><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getPrenom()}</a></td><td>{$eleve->getVille()}</td><td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td><td>{$eleve->getDateNaissance()}</td><td><a href='profileEleve.php?id={$eleve->getId()}'>Editer</a></td><td><a href='#' data-toggle='modal' data-target='#supprimer'>Supprimer</a><div class='modal fade' id='supprimer' tabindex='1' role='dialog' aria-labelledby='supprimereleve' aria-hidden='true'><div class='modal-dialog' role='document'><div class='modal-content'><div class='modal-header'><h5 class='modal-title'>Suppression :</h5><button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div><div class='modal-body'>Voulez vous vraiment supprimer {$eleve->getNom()} {$eleve->getPrenom()}</div><div class='modal-footer'><a href='panel.php?deleteStudent={$eleve->getId()}'><button type='button' class='btn btn-primary'>Oui</button></a><button type='button' class='btn btn-secondary' data-dismiss='modal'>Non</button></div></div></div></div></td></tr>";
-
+        $liste .= "<tr><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getNom()}</a></td>
+<td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getPrenom()}</a></td><td>{$eleve->getVille()}</td>
+<td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td>
+<td>{$eleve->getDateNaissance()}</td>
+<td><a href='profileEleve.php?id={$eleve->getId()}'>Editer</a></td>
+<td><a href='panel.php?deleteStudent={$eleve->getId()}'>Supprimer</a></td>";
     }
 
     $observables = Observable::getAll();

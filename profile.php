@@ -103,9 +103,11 @@ $html = <<<HTML
 HTML;
 
 		$html .= '</div>';
+    $html.= "<script>$('.collapse').collapse('hide')</script>";
+    $w->appendContent($html);
+    $w->appendContent(footer());
+    echo ($w->toHTML());
 }
-
-$html.= "<script>$('.collapse').collapse('hide')</script>";
-$w->appendContent($html);
-$w->appendContent(footer());
-echo ($w->toHTML());
+else{
+    header('Location: index.php');
+}

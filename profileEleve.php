@@ -28,10 +28,10 @@ $html .= <<<HTML
 
 <main>
             <div style="height:55px;"></div>
-            <h1 class="offset-sm-2">Édition du profil Elève :</h1>
+            <h1 class="offset-sm-2">Édition du profil de l'élève {$eleve[0]->getNom()} {$eleve[0]->getPrenom()} :</h1>
             <div style="height:15px;"></div>
 
-            <form>
+            <form method="get" action="updateStudent.php">
             
                 <div class="offset-md-3 col-sm-6">
                     <center><img src="img/noavatar.png"  alt="photoprofil" width="20%" class="img-circle" name="profil" accept="image/*"></center>
@@ -45,12 +45,9 @@ $html .= <<<HTML
 
                 <div class="input-group offset-sm-3 col-sm-6">
                     <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
+                    <input class="form-control" name="idEleve" type="text" placeholder="{$id}" value="{$eleve[0]->getId()}" readonly="readonly">
+                    <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
                     <input type="text" name="nom" class="form-control" placeholder="Nom" value="{$eleve[0]->getNom()}" required>
-                </div>
-
-
-
-                <div class="input-group offset-sm-3 col-sm-6">
                     <span class="input-group-addon"><i class="fa fa-address-card-o" aria-hidden="true"></i></span>
                     <input type="text" name="prenom" class="form-control" placeholder="Prénom" value="{$eleve[0]->getPrenom()}" required>
                 </div>
@@ -58,6 +55,12 @@ $html .= <<<HTML
                 <div class="input-group offset-sm-3 col-sm-6">
                     <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                     <input type="date" name="datens" class="form-control" placeholder="Date de naissance (YYYY-MM-DD)" value="{$eleve[0]->getDateNaissance()}" required pattern="((?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))}">
+                    <select class="custom-select" name="classe" required="">
+                        <option value="{$eleve[0]->getIdClass()}" selected="">Choisissez une classe</option>
+                        <option value="1">Petite section</option>
+                        <option value="2">Moyenne section</option>
+                        <option value="3">Grande section</option>
+                    </select>
                 </div>
 
                 <div class="input-group offset-sm-3 col-sm-6">
@@ -74,15 +77,15 @@ $html .= <<<HTML
 
                 <div  class="input-group offset-sm-3 col-sm-6">
                     <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" aria-label="adresse" placeholder="Adresse" value="{$eleve[0]->getRue()}" required>
-                    <input type="text" name="cp1" class="form-control" placeholder="Code postal" pattern="[0-9]{5}" value="0{$eleve[0]->getCodePostal()}" required>
-                    <input type="text" class="form-control" aria-label="ville" placeholder="Ville" value="{$eleve[0]->getVille()}" required>
+                    <input type="text" name="rue" class="form-control" aria-label="adresse" placeholder="Adresse" value="{$eleve[0]->getRue()}" required>
+                    <input type="text" name="cp" class="form-control" placeholder="Code postal" pattern="[0-9]{5}" value="{$eleve[0]->getCodePostal()}" required>
+                    <input type="text" name="ville" class="form-control" aria-label="ville" placeholder="Ville" value="{$eleve[0]->getVille()}" required>
                 </div>
                 <div class="input-group offset-sm-3 col-sm-6">
                     <span class="input-group-addon"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" aria-label="adresse" placeholder="Adresse 2" value="{$eleve[0]->getRue2()}">
+                    <input type="text" name="rue2" class="form-control" aria-label="adresse" placeholder="Adresse 2" value="{$eleve[0]->getRue2()}">
                     <input type="text" name="cp2" class="form-control" placeholder="Code postal 2" pattern="[0-9]{5}" value="{$eleve[0]->getCodePostal2()}">
-                    <input type="text" class="form-control" aria-label="ville" placeholder="Ville 2" value="{$eleve[0]->getVille2()}">
+                    <input type="text" name="ville2" class="form-control" aria-label="ville" placeholder="Ville 2" value="{$eleve[0]->getVille2()}">
                 </div>
 
                 <div class="input-group">
