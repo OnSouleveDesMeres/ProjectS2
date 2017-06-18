@@ -12,7 +12,11 @@ require_once 'footer.php';
 require_once 'Eleve.class.php';
 require_once 'Categorie.class.php';
 require_once 'Insert.class.php';
+require_once 'Professeur.class.php';
+require_once 'contentAdmin.php';
+require_once 'createAccount.php';
 require_once 'myPDO.class.php';
+require_once 'randomGenerator.php';
 
 if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])){
 if (isset($_GET) && !empty($_GET)) {
@@ -68,6 +72,37 @@ if (isset($_POST) && !empty($_POST)){
         Insert::insertIntoCategorie($_POST["idCatgSup"], $_POST["nomCatg"]);
 
     }
+    if (isset($_POST["nomp"]) && !empty($_POST["nomp"]) && isset($_POST["prenomp"]) && !empty($_POST["prenomp"])
+        && isset($_POST["datensp"]) && !empty($_POST["datensp"]) && isset($_POST["profSup"]) && !empty($_POST["profSup"])
+        && isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["ville"]) && !empty($_POST["ville"])
+        && isset($_POST["cp"]) && !empty($_POST["cp"]) && isset($_POST["ad"]) && !empty($_POST["ad"])
+        && isset($_POST["telephone"]) && !empty($_POST["telephone"])){
+
+        Insert::insertIntoProfessor($_POST["profSup"], $_POST["nomp"], $_POST["prenomp"], $_POST["email"], $_POST["telephone"], $_POST["ville"], $_POST["cp"], $_POST["ad"], $_POST["datensp"]);
+        $rnd = randomPassGenerating(25);
+        $rq =<<<SQL
+SELECT *
+FROM PROFESSEUR
+WHERE NOM = ?
+AND PRNM = ?
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($rq);
+
+        $pdo->setFetchMode(PDO::FETCH_CLASS, 'Professeur');
+
+        if($pdo->execute(array($_POST["nomp"], $_POST["prenomp"]))){
+            $datas = $pdo->fetchAll();
+            $id = $datas[0]->getId();
+            Insert::insertIntoUSer($id, sha1($rnd));
+            emailActivation($_POST["email"], $id, $rnd);
+
+        }
+        else{
+            throw new Exception('Erreur innopinée');
+        }
+
+    }
 }
 
     $html = new WebPage('Panel administratif');
@@ -106,6 +141,15 @@ if (isset($_POST) && !empty($_POST)){
         $tabCatg .= "<tr><td>{$category->getNom()}</td><td><a href='categorie.php?id={$category->getId()}'>Modifier</a></td><td><a href='panel.php?deleteCatg={$category->getId()}'>Supprimer</a></td></tr>";
     }
 
+    $content = '';
+    $links = '';
+
+    $professeur = Professeur::createFromId($_COOKIE["profId"]);
+    if($professeur[0]->getIdSup() == null){
+        $content = getContent();
+        $links = getNavLinks();
+    }
+
     $page =<<<HTML
 <div class="col-sm-12">
     <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
@@ -127,6 +171,7 @@ if (isset($_POST) && !empty($_POST)){
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajouterobservable" role="tab" aria-controls="Ajouter une observable">Ajouter une observable</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recapcatg" role="tab" aria-controls="Modifier un élève">Récapitulatif des catégories</a></li>
             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutcatg" role="tab" aria-controls="Ajouter une observable">Ajouter une catégorie</a></li>
+            {$links}
         </ul>
 
     </nav>
@@ -304,7 +349,7 @@ if (isset($_POST) && !empty($_POST)){
             </div>
             <!---------------------------------------------------------->
             <div class="tab-pane" id="recapcatg" role="tabpanel">
-                <h1>Affichage des observables :</h1>
+                <h1>Affichage des catégories :</h1>
         
                 <div style="height:25px;"></div>
 
@@ -363,6 +408,69 @@ if (isset($_POST) && !empty($_POST)){
                     </div>
                 </section>
             </div>
+            <!---------------------------------------------------------->
+            <div class="tab-pane" id="recapcatg" role="tabpanel">
+                <h1>Affichage des catégories :</h1>
+        
+                <div style="height:25px;"></div>
+
+                <div class="tab-pane active" id="recapobservable" role="tabpanel">
+
+                    <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        <button type="button" class="btn btn-secondary">Trier par...</button>
+                        </div>
+                    </center>
+    
+                    <section class="row text-center placeholders">
+                        <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
+                            <table class="table">
+                                <thead class="thead-inverse  text-center">
+                                    <tr>
+                                        <th>Nom catégorie</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {$tabCatg}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <!---------------------------------------------------------->
+            <div class="tab-pane" id="ajoutcatg" role="tabpanel">
+                <h1>Ajouter une catégorie :</h1>
+        
+                <div style="height:25px;"></div>
+
+                <section class="row text-center placeholders">
+                    <div class="offset-sm-2 col-sm-8 offset-sm-2 placeholder">
+                        <form action="panel.php" method="post">
+
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <select class="custom-select" name="idCatgSup" required>
+                                        <option value="" selected>Choisissez une catégorie mère</option>
+                                        {$listeCatg}
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" name="nomCatg" class="form-control" placeholder="Nom" required>
+                                </div>
+                            </div>
+                            <div>
+                                <button id="sendstudent" type="submit" class="btn btn-primary">Ajouter la catégorie</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        
+            {$content}
             <!---------------------------------------------------------->
         </div>
 

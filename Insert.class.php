@@ -7,6 +7,7 @@
  */
 
 require_once 'myPDO.class.php';
+require_once 'Professeur.class.php';
 
 class Insert{
 
@@ -25,12 +26,22 @@ SQL;
     public static function insertIntoProfessor($IDSUP, $NOM, $PRNM, $EMAIL, $NUMTEL, $VILLE, $CP, $RUE, $DATNS){
 
         $requete =<<<SQL
-INSERT INTO PROFESSEUR (PRO_IDPROF, NOM, PRNM, EMAIL, NUMTEL, VILLE, CP, RUE, DATNS) VALUES ('{$IDSUP}', '{$NOM}', '{$PRNM}', '{$EMAIL}', '{$NUMTEL}', '{$VILLE}', '{$CP}', '{$RUE}', STR_TO_DATE('{$DATNS}','%m/%d/%Y'));
+INSERT INTO PROFESSEUR (PRO_IDPROF, NOM, PRNM, EMAIL, NUMTEL, VILLE, CP, RUE, DATNS) VALUES ('{$IDSUP}', '{$NOM}', '{$PRNM}', '{$EMAIL}', '{$NUMTEL}', '{$VILLE}', '{$CP}', '{$RUE}', STR_TO_DATE('{$DATNS}','%Y-%m-%d'));
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
 
         $pdo->execute(array());
+
+    }
+
+    public static function insertIntoUSer($id, $pass){
+
+        $requete =<<<SQL
+INSERT INTO USERS (IDUSER, PASSWORD) VALUES ('{$id}', '{$pass}');
+SQL;
+
+        myPDO::getInstance()->query($requete);
 
     }
 

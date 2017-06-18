@@ -19,7 +19,7 @@ if(isset($_POST) && !empty($_POST)){
     var_dump($_POST);
 
     if(isset($_POST['email']) && !empty($_POST['email'])){
-        header("Location: sendMail.php?mailTo={$_POST['email']}");
+        header("Location: createAccount.php?mailTo={$_POST['email']}");
     }
 
     $superior = null;
