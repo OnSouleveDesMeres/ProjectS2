@@ -29,8 +29,8 @@ class Categorie{
 
         $requete =<<<SQL
 SELECT *
-FROM CATEGORIE
-WHERE IDCATG = ?
+FROM CATEGORIE c
+WHERE c.IDCATG = ?
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);

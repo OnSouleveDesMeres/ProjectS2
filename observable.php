@@ -33,23 +33,28 @@ if(isset($_GET['id'])) {
             </div>
             
             <div class="input-group offset-sm-3 col-sm-6">            	
-                <span class="input-group-addon"><i class="fa fa-align-justify" aria-hidden="true"></i></span>
                 <input type="text" name="nom" class="form-control" placeholder="Nom" value="{$observable[0]->getNom()}" required>
             </div>
-
-            <div class="form-group offset-sm-3 col-sm-6">
-		    <label for="exampleSelect1">Catégorie :</label>
-			    <select class="form-control" id="categorie" value="{$Categorie[0]->getNom()}">
+            <div class="offset-md-3 col-sm-6">
+            <label>Catégorie :</label>  
+			    <select class="form-control" name="categorie" id="categorie" value="{$Categorie[0]->getNom()}">
+			    	<option value="{$Categorie[0]->getId()}">{$Categorie[0]->getNom()}</option>
 HTML;
 		foreach($Categories as $c) {
-			$html .= '<option>' . $c->getNom() . '</option>';
+			$html .= '<option value="' . $c->getId() . '">' . $c->getNom() . '</option>';
 		}
 
 $html .= <<<HTML
-		</select>
-		</div>	
+			</select>
+		</div>
+		</div>
 		  </div>
-            	<input type="text" name="id" style="margin-left:-9999999px;" value="{$id}">
+		  	<div class="input-group offset-sm-3 col-sm-6">
+            	<input type="text" name="idObs" style="margin-left:-9999999px;" value="{$id}">
+            </div>
+           <div class="input-group">
+                <button id="editObservable" type="submit" class="btn btn-success offset-sm-4 col-sm-4">Valider</button>
+            </div>
             
             <div style="height:15px;"></div>
         </form>
