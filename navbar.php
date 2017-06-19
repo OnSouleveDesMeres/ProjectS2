@@ -26,8 +26,9 @@ function navbar() {
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownconnect">
                     <div class="container-fluid">
-                            <a href="profile.php">Mon profil</a>
-                            <a href="cookieDelete.php">Déconnexion</a>
+                            <a class="col-sm-12" href="profile.php">Mon profil</a>
+                            <a class="col-sm-12" href="changePassword.php">Mot de passe</a>
+                            <a class="col-sm-12" href="cookieDelete.php">Déconnexion</a>
                     </div>
                 </div>
             </div>'
