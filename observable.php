@@ -23,23 +23,33 @@ if(isset($_GET['id'])) {
     $id = $_GET['id'];
     $observable = Observable::createFromId($id);
     $Categorie = Categorie::createFromId($observable[0]->getIdCatg());
+    $Categories = Categorie::getAll();
     $html .= <<<HTML
-
+    <div style="height:15px;"></div>
     <form name="Observable" method="GET" action="updateObservable.php">
 
-            <div class="offset-md-3 col-sm-6">                
+            <div class="offset-md-3 col-sm-6"> 
+            <label>Nom :</label>               
             </div>
-
-            <div class="input-group offset-sm-3 col-sm-6">
-                <span class="input-group-addon"></span>
+            
+            <div class="input-group offset-sm-3 col-sm-6">            	
+                <span class="input-group-addon"><i class="fa fa-align-justify" aria-hidden="true"></i></span>
                 <input type="text" name="nom" class="form-control" placeholder="Nom" value="{$observable[0]->getNom()}" required>
             </div>
 
-            <div class="input-group offset-sm-3 col-sm-6">
-                <span class="input-group-addon"></span>
-                <input type="text" name="idCatg" class="form-control" placeholder="Prénom" value="{$Categorie[0]->getNom()}" required>
-            </div>
-            	<input type="text" name="id" style="margin-left:-9999999px;"
+            <div class="form-group offset-sm-3 col-sm-6">
+		    <label for="exampleSelect1">Catégorie :</label>
+			    <select class="form-control" id="categorie" value="{$Categorie[0]->getNom()}">
+HTML;
+		foreach($Categories as $c) {
+			$html .= '<option>' . $c->getNom() . '</option>';
+		}
+
+$html .= <<<HTML
+		</select>
+		</div>	
+		  </div>
+            	<input type="text" name="id" style="margin-left:-9999999px;" value="{$id}">
             
             <div style="height:15px;"></div>
         </form>
