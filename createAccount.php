@@ -6,9 +6,18 @@
  * Time: 22:34
  */
 
+require_once 'PHPMailer/PHPMailerAutoload.php';
+
 function emailActivation($to, $user, $pass){
 
-    mail($to, "Votre nouveau compte sur projectS2.tk", "Bonjour, votre compte sur http://projectS2.tk a bien été créé \nVoici vos identifiants gardez les précieusement : \nLogin : {$user}\nMot de passe : {$pass}", "Votre nouveau compte sur projectS2.tk", "-f account@ecole_du_pre_vers_l_aisne -F compte");
+    $mail = new PHPMailer;
 
-    header('Location: panel.php');
+    $mail->isSMTP();
+
+    $mail->Host = 'smtp.gmail.com';
+
+    $mail->SMTPAuth = true;
+
+
+
 }

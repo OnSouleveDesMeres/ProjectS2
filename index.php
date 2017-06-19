@@ -100,7 +100,7 @@ $tgs = count($gs);
     		 $img .= '<td style="border-right:solid;"></td>';
     		}
     		if ($i < $tgs) {
-    		 $img .= '<td class="col-sm-4"><a href="eleve.php ?id=' . $gs[$i]->getId() . '" style="color:black;">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
+    		 $img .= '<td class="col-sm-4"><a href="eleve.php?id=' . $gs[$i]->getId() . '" style="color:black;">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
     		}
     		else {
     		 $img .= '<td></td>';

@@ -98,7 +98,7 @@ function getContent(){
                                 </div>
                             </div>
                             <div>
-                                <button id="sendstudent" type="submit" class="btn btn-primary">Ajouter l'élève</button>
+                                <button id="sendstudent" type="submit" class="btn btn-primary">Ajouter le professeur</button>
                             </div>
                         </form>
                     </div>
