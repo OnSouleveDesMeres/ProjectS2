@@ -203,4 +203,28 @@ SQL;
 
     }
 
+    public static function getLastInsert(){
+        $rq=<<<SQL
+SELECT *
+FROM ELEVE
+WHERE IDELEVE = (SELECT max(IDELEVE)
+                  FROM ELEVE)
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($rq);
+
+        $res = $pdo->execute(array());
+
+        if ($res){
+
+            $datas = $pdo->fetchAll();
+            return $datas;
+
+        }
+        else{
+            throw new Exception('Erreur, impossible de récupérer les observables de cet élève');
+        }
+
+    }
+
 }

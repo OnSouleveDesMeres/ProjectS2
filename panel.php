@@ -17,6 +17,7 @@ require_once 'contentAdmin.php';
 require_once 'createAccount.php';
 require_once 'myPDO.class.php';
 require_once 'randomGenerator.php';
+require_once 'initObsStudent.php';
 
 if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])){
     if (isset($_GET) && !empty($_GET)) {
@@ -69,7 +70,8 @@ SQL;
             && isset($_POST["telephone"]) && !empty($_POST["telephone"])){
 
             Insert::insertIntoStudent($_POST["classe"], $_POST["nome"], $_POST["prenome"], $_POST["email"], $_POST["telephone"], $_POST["ville1"], $_POST["cp1"], $_POST["ad1"], $_POST["datnse"], $_POST["email2"], $_POST["telephone2"], $_POST["ville2"], $_POST["cp2"], $_POST["ad2"]);
-
+            $e = Eleve::getLastInsert();
+            initObs($e[0]->getId());
 
         }
         if (isset($_POST["idCatg"]) && !empty($_POST["idCatg"]) && isset($_POST["nomObs"]) && !empty($_POST["nomObs"])){
