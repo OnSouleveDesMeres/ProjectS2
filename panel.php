@@ -195,11 +195,8 @@ SQL;
                 <h1>Affichage des élèves :</h1>
         
                 <div style="height:25px;"></div>
-                    <div style="overflow-x:auto;" class="btn-group offset-sm-4" role="group" aria-label="bouton trier par...">
-                        <button id="btntrier" type="button" class="btn btn-secondary">Trier par...</button>
-                        <button id="btntrier" type="button" class="btn btn-secondary">Trier par...</button>
-                        <button id="btntrier" type="button" class="btn btn-secondary">Trier par...</button>
-                        <input id="searchbar" type="text" class="search form-control" placeholder="Que recherchez-vous?">
+                    <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
+                        <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher un élève ?">
                     </div>
                 <section class="row text-center placeholders">
                     <div style="overflow-x:auto;" class="col-sm-12 placeholder">
@@ -304,15 +301,13 @@ SQL;
 
                 <div class="tab-pane active" id="recapobservable" role="tabpanel">
 
-                    <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        </div>
-                    </center>
+                <div style="height:25px;"></div>
+                    <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
+                        <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher une observable ?">
+                    </div>
     
                     <section class="row text-center placeholders">
-                        <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
+                        <div style="overflow-x:auto;" class="col-sm-12 placeholder">
                             <table class="table">
                                 <thead class="thead-inverse  text-center">
                                     <tr>
@@ -365,15 +360,13 @@ SQL;
 
                 <div class="tab-pane active" id="recapobservable" role="tabpanel">
 
-                    <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        </div>
-                    </center>
+                <div style="height:25px;"></div>
+                    <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
+                        <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher un élève ?">
+                    </div>
     
                     <section class="row text-center placeholders">
-                        <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
+                        <div style="overflow-x:auto;" class="col-sm-12 placeholder">
                             <table class="table">
                                 <thead class="thead-inverse  text-center">
                                     <tr>
@@ -426,15 +419,13 @@ SQL;
 
                 <div class="tab-pane active" id="recapobservable" role="tabpanel">
 
-                    <center style="overflow-x:auto;"><div class="btn-group" role="group" aria-label="bouton trier par...">
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        <button type="button" class="btn btn-secondary">Trier par...</button>
-                        </div>
-                    </center>
+                <div style="height:25px;"></div>
+                    <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
+                        <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher une catégorie ?">
+                    </div>
     
                     <section class="row text-center placeholders">
-                        <div style="overflow-x:auto;" class="offset-sm-1 col-sm-10 offset-sm-1 placeholder">
+                        <div style="overflow-x:auto;" class="col-sm-12 placeholder">
                             <table class="table">
                                 <thead class="thead-inverse  text-center">
                                     <tr>
