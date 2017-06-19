@@ -30,6 +30,8 @@ class Professeur{
 
     protected $DATNS = null;
 
+    protected $IMGPATH = null;
+
 
     public function getId()
     {
@@ -62,6 +64,9 @@ class Professeur{
     }
     public function getDateNaissance(){
         return $this->DATNS;
+    }
+    public function getImgPath(){
+        return $this->IMGPATH;
     }
 
     public static function createFromId($id){

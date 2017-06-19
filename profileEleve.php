@@ -23,7 +23,13 @@ if (isset($_GET['id'])) {
 $id = $_GET['id'];
 
 $eleve = Eleve::createFromId($id);
-    
+
+$imgUser = $eleve[0]->getImgPath();
+
+if($imgUser == null){
+    $imgUser="img/noavatar.png";
+}
+
 $html .= <<<HTML
 
 <main>
@@ -31,14 +37,14 @@ $html .= <<<HTML
             <h1 class="offset-sm-2">Édition du profil de l'élève {$eleve[0]->getNom()} {$eleve[0]->getPrenom()} :</h1>
             <div style="height:15px;"></div>
 
-            <form method="get" action="updateStudent.php">
+            <form method="post" action="updateStudent.php" enctype="multipart/form-data">
             
                 <div class="offset-md-3 col-sm-6">
-                    <center><img src="img/noavatar.png"  alt="photoprofil" width="20%" class="img-circle" name="profil" accept="image/*"></center>
+                    <center><img src="{$imgUser}"  alt="photoprofil" width="20%" class="img-circle" name="profil"></center>
                     <div style="height:25px;"></div>
                     <center> 
                         <div class="fileUpload btn btn-primary">
-                            <input type="file" class="upload">
+                        <input type="file" class="upload" name="avatar">
                         </div>
                     </center>
                 </div>

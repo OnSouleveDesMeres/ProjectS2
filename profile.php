@@ -22,6 +22,11 @@ $html = "";
 if (isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])){
     $professeur = Professeur::createFromId($_COOKIE["profId"]);
 
+    $imgUser = $professeur[0]->getImgPath();
+
+    if($imgUser == null){
+        $imgUser="img/noavatar.png";
+    }
 
 $html = <<<HTML
 
@@ -44,14 +49,14 @@ $html = <<<HTML
         <h1 class="offset-sm-2">Édition de votre profil :</h1>
         <div style="height:15px;"></div>
 
-        <form name="Profil" method="GET" action="updateProfil.php">
+        <form name="Profil" method="POST" action="updateProfil.php" enctype="multipart/form-data">
 
             <div class="offset-md-3 col-sm-6">
-                <center><img src="img/noavatar.png"  alt="photoprofil" width="20%" class="img-circle" name="profil" accept="image/*"></center>
+                <center><img src="{$imgUser}"  alt="photoprofil" width="20%" class="img-circle" name="profil" accept="image/*"></center>
                 <div style="height:25px;"></div>
                 <center>
                     <div class="fileUpload btn btn-primary">
-                        <input type="file" class="upload">
+                        <input type="file" class="upload" name="avatar">
                     </div>
                 </center>
             </div>

@@ -40,6 +40,8 @@ class Eleve{
 
     protected $RUE2 = null;
 
+    protected $IMGPATH = null;
+
     public function getId(){
         return $this->IDELEVE;
     }
@@ -84,6 +86,9 @@ class Eleve{
     }
     public function getRue2(){
         return $this->RUE2;
+    }
+    public function getImgPath(){
+        return$this->IMGPATH;
     }
 
     /**

@@ -14,7 +14,7 @@ class Update{
         if($chp)
 
         $requete =<<<SQL
-UPDATE ELEVE SET $chp = $value
+UPDATE ELEVE SET $chp = '{$value}'
 WHERE IDELEVE = $id
 SQL;
 
@@ -26,7 +26,7 @@ SQL;
         if($chp)
 
             $requete =<<<SQL
-UPDATE PROFESSEUR SET $chp = $value
+UPDATE PROFESSEUR SET $chp = '{$value}'
 WHERE IDPROF = $id
 SQL;
 

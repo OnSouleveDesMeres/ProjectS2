@@ -163,6 +163,11 @@ SQL;
             $content = getContent();
             $links = getNavLinks();
         }
+        $imgUser = $professeur[0]->getImgPath();
+
+        if($imgUser == null){
+            $imgUser="img/noavatar.png";
+        }
 
         $page =<<<HTML
     <div class="col-sm-12">
@@ -171,7 +176,7 @@ SQL;
             <div style="height:25px;"></div>
     
             <center>
-                <img src="img/noavatar.png"  alt="photoprofil" width="50%" class="img-circle">
+                <img src="{$imgUser}"  alt="photoprofil" width="50%" class="img-circle">
                 <div style="height:25px;"></div>
                 <a href="profile.php"><button type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i> Éditer le profil</button></a>
             </center>
