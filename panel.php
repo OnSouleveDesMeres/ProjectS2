@@ -129,7 +129,7 @@ SQL;
     $listeObs = '';
     foreach ($observables as $obs){
 
-        $listeObs .= "<tr><td>{$obs->getNom()}</td><td><a href='eleve.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
+        $listeObs .= "<tr><td>{$obs->getNom()}</td><td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
 
     }
 
