@@ -127,7 +127,6 @@ SQL;
         $liste = '';
         foreach ($students as $eleve){
 
-<<<<<<< HEAD
             $liste .= "<tr><td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getNom()}</a></td>
     <td><a href='eleve.php?id={$eleve->getId()}'>{$eleve->getPrenom()}</a></td><td>{$eleve->getVille()}</td>
     <td>{$eleve->getCodePostal()}</td><td>{$eleve->getRue()}</td><td>{$eleve->getEmail()}</td><td>{$eleve->getNumeroTel()}</td>
@@ -135,9 +134,6 @@ SQL;
     <td><a href='profileEleve.php?id={$eleve->getId()}'>Editer</a></td>
     <td><a href='panel.php?deleteStudent={$eleve->getId()}'>Supprimer</a></td>";
         }
-=======
-        $listeObs .= "<tr><td>{$obs->getNom()}</td><td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
->>>>>>> f782ecf78b8e2ab139f55b752e88fc3283fa9ccb
 
         $observables = Observable::getAll();
         $listeObs = '';
