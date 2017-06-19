@@ -139,7 +139,7 @@ SQL;
         $listeObs = '';
         foreach ($observables as $obs){
 
-            $listeObs .= "<tr><td>{$obs->getNom()}</td><td><a href='eleve.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
+            $listeObs .= "<tr><td>{$obs->getNom()}</td><td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
 
         }
 
@@ -363,65 +363,6 @@ SQL;
                     <div style="height:25px;"></div>
                         <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
                             <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher un élève ?">
-                        </div>
-        
-                        <section class="row text-center placeholders">
-                            <div style="overflow-x:auto;" class="col-sm-12 placeholder">
-                                <table class="table">
-                                    <thead class="thead-inverse  text-center">
-                                        <tr>
-                                            <th>Nom catégorie</th>
-                                            <th>Modifier</th>
-                                            <th>Supprimer</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {$tabCatg}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </section>
-                    </div>
-                </div>
-                <!---------------------------------------------------------->
-                <div class="tab-pane" id="ajoutcatg" role="tabpanel">
-                    <h1>Ajouter une catégorie :</h1>
-            
-                    <div style="height:25px;"></div>
-    
-                    <section class="row text-center placeholders">
-                        <div class="offset-sm-2 col-sm-8 offset-sm-2 placeholder">
-                            <form action="panel.php" method="post">
-    
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <select class="custom-select" name="idCatgSup" required>
-                                            <option value="" selected>Choisissez une catégorie mère</option>
-                                            {$listeCatg}
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" name="nomCatg" class="form-control" placeholder="Nom" required>
-                                    </div>
-                                </div>
-                                <div>
-                                    <button id="sendstudent" type="submit" class="btn btn-primary">Ajouter la catégorie</button>
-                                </div>
-                            </form>
-                        </div>
-                    </section>
-                </div>
-                <!---------------------------------------------------------->
-                <div class="tab-pane" id="recapcatg" role="tabpanel">
-                    <h1>Affichage des catégories :</h1>
-            
-                    <div style="height:25px;"></div>
-    
-                    <div class="tab-pane active" id="recapobservable" role="tabpanel">
-    
-                    <div style="height:25px;"></div>
-                        <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
-                            <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher une catégorie ?">
                         </div>
         
                         <section class="row text-center placeholders">
