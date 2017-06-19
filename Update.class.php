@@ -70,4 +70,16 @@ SQL;
 
     }
 
+    public static function updateUser($id, $chp, $value){
+        if($chp)
+
+            $requete =<<<SQL
+UPDATE USERS SET $chp = '{$value}'
+WHERE IDUSER = $id
+SQL;
+
+        myPDO::getInstance()->query($requete);
+
+    }
+
 }
