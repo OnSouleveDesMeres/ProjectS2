@@ -55,7 +55,7 @@ $html .= <<<HTML
                 <div class="input-group offset-sm-3 col-sm-6">
                     <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                     <input type="date" name="datens" class="form-control" placeholder="Date de naissance (YYYY-MM-DD)" value="{$eleve[0]->getDateNaissance()}" required pattern="((?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))}">
-                    <select class="custom-select" name="classe" required="">
+                    <select class="custom-select" name="classe" required="" value="{$eleve[0]->getIdClass()}">
                         <option value="{$eleve[0]->getIdClass()}" selected="">Choisissez une classe</option>
                         <option value="1">Petite section</option>
                         <option value="2">Moyenne section</option>
