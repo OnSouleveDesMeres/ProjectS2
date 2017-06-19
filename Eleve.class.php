@@ -213,6 +213,8 @@ SQL;
 
         $pdo = myPDO::getInstance()->prepare($rq);
 
+        $pdo->setFetchMode(PDO::FETCH_CLASS, 'Eleve');
+
         $res = $pdo->execute(array());
 
         if ($res){

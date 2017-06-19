@@ -17,3 +17,13 @@ function initObs($id){
     }
 
 }
+
+function initStud($id){
+
+    $students = Eleve::getAll();
+
+    foreach ($students as $student){
+        Insert::insertIntoValidation($id, $student->getId(), 1);
+    }
+
+}

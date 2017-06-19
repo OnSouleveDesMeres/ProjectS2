@@ -141,4 +141,30 @@ SQL;
 
     }
 
+    public static function getLastInsert(){
+        $rq=<<<SQL
+SELECT *
+FROM OBSERVABLE
+WHERE IDOBS = (SELECT max(IDOBS)
+                  FROM OBSERVABLE)
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($rq);
+
+        $pdo->setFetchMode(PDO::FETCH_CLASS, 'Observable');
+
+        $res = $pdo->execute(array());
+
+        if ($res){
+
+            $datas = $pdo->fetchAll();
+            return $datas;
+
+        }
+        else{
+            throw new Exception('Erreur, impossible de récupérer l observable');
+        }
+        
+    }
+
 }

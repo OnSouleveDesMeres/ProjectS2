@@ -14,7 +14,7 @@ class Insert{
     public static function insertIntoStudent($IDCLASSE, $NOM, $PRNM, $EMAIL1, $NUMTEL1, $VILLE1, $CP1, $RUE1, $DATNS, $EMAIL2 = null, $NUMTEL2 = null, $VILLE2 = null, $CP2 = null, $RUE2 = null){
 
         $requete =<<<SQL
-INSERT INTO ELEVE (IDCLASSE, NOM, PRNM, EMAIL1, NUMTEL1, VILLE1, CP1, RUE1, DATNS, EMAIL2, NUMTEL2, VILLE2, CP2, RUE2) VALUES ('{$IDCLASSE}', '{$NOM}', '{$PRNM}', '{$EMAIL1}', '{$NUMTEL1}', '{$VILLE1}', '{$CP1}', '{$RUE1}', STR_TO_DATE('{$DATNS}','%m/%d/%Y'), '{$EMAIL2}', '{$NUMTEL2}', '{$VILLE2}', '{$CP2}', '{$RUE2}');
+INSERT INTO ELEVE (IDCLASSE, NOM, PRNM, EMAIL1, NUMTEL1, VILLE1, CP1, RUE1, DATNS, EMAIL2, NUMTEL2, VILLE2, CP2, RUE2) VALUES ('{$IDCLASSE}', '{$NOM}', '{$PRNM}', '{$EMAIL1}', '{$NUMTEL1}', '{$VILLE1}', '{$CP1}', '{$RUE1}', STR_TO_DATE('{$DATNS}','%Y-%m-%d'), '{$EMAIL2}', '{$NUMTEL2}', '{$VILLE2}', '{$CP2}', '{$RUE2}');
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
