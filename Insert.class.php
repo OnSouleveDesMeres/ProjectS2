@@ -57,6 +57,18 @@ SQL;
 
     }
 
+    public static function insertIntoValidation($idObs, $idEleve, $value){
+
+        $requete =<<<SQL
+INSERT INTO VALIDATION (IDOBS, IDELEVE, valide) VALUES ('{$idObs}', '{$idEleve}', '{$value}');
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->execute(array());
+
+    }
+
     public static function insertIntoCategorie($idCatgSup, $nom){
 
         $requete =<<<SQL
