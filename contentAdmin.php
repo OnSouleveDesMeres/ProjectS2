@@ -18,7 +18,7 @@ function getContent(){
 
     foreach ($professeurs as $professeur){
         $listeProf .= "<option value='{$professeur->getId()}'>{$professeur->getNom()} {$professeur->getPrenom()}</option>";
-        $tabProf .= "<tr><td>{$professeur->getNom()}</td><td>{$professeur->getPrenom()}</td><td>{$professeur->getVille()}</td><td>{$professeur->getCodePostal()}</td><td>{$professeur->getRue()}</td><td>{$professeur->getEmail()}</td><td>{$professeur->getNumeroTel()}</td><td>{$professeur->getDateNaissance()}</td><td></td><td></td></tr>";
+        $tabProf .= "<tr><td>{$professeur->getNom()}</td><td>{$professeur->getPrenom()}</td><td>{$professeur->getVille()}</td><td>{$professeur->getCodePostal()}</td><td>{$professeur->getRue()}</td><td>{$professeur->getEmail()}</td><td>{$professeur->getNumeroTel()}</td><td>{$professeur->getDateNaissance()}</td><td><a href='professeur.php?id={$professeur->getId()}'>Editer</a></td><td><a href='panel.php?deleteProf={$professeur->getId()}'>Supprimer</a></td></tr>";
     }
     $html =<<<HTML
 

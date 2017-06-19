@@ -50,6 +50,16 @@ SQL;
         $pdo->execute(array($_GET["deleteCatg"]));
 
     }
+    if (isset($_GET["deleteProf"]) && !empty($_GET["deleteProf"])) {
+        $requete = <<<SQL
+DELETE FROM PROFESSEUR WHERE IDPROF = ?
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->execute(array($_GET["deleteProf"]));
+
+    }
 }
 if (isset($_POST) && !empty($_POST)){
     if (isset($_POST["nome"]) && !empty($_POST["nome"]) && isset($_POST["prenome"]) && !empty($_POST["prenome"])
