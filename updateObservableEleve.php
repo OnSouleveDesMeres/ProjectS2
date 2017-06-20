@@ -20,7 +20,7 @@ SQL;
         $db->query($requete);
 	}
 }
-header("Location: eleve?id=".$id);
+header("Location: eleve.php?id=".$id);
 }
 else {
 	header("Location: index.php");
