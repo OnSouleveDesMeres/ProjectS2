@@ -22,6 +22,7 @@ $html='';
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
     $eleve = Eleve::createFromId($id);
+    $categories = Categorie::getAll();
 
     $html = <<<HTML
         <div class="row">
@@ -45,8 +46,21 @@ if(isset($_GET['id'])) {
             </div>
             <div id="card3" class = "offset-sm-1 card" style="margin-top:50px;">
                 <div class="form-group container" style="margin:10px;">
-                    <form action="eleve.php">
-                    
+                    <form action="observableEleve.php" method="GET">
+                        <div class="form-group">
+                          <label>Choisissez une catégorie pour modifier l'observable de l'élève :</label>
+                          <select class="form-control" name="categorie"> 
+HTML;
+
+foreach ($categories as $c){
+  $html .= '<option value="'.$c->getId().'">'.$c->getNom().'</option>';
+}
+
+$html .= <<<HTML
+                          </select>
+                          </div>
+                          <button class="btn btn-primary" type="submit">Sélectionner</button>
+                          <input type="text" name="id" value="{$id}" style="margin-left:-99999999px;">
                     </form>
                 </div>
             </div>
