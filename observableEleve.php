@@ -39,7 +39,7 @@ FROM VALIDATION v
 WHERE v.IDELEVE = $id
 AND IDOBS IN (SELECT IDOBS
               FROM OBSERVABLE
-              WHERE IDCATG = $categorie);
+              WHERE IDCATG = '{$categorie}');
 
 SQL;
 
@@ -47,7 +47,7 @@ SQL;
 
         $pdo->setFetchMode(PDO::FETCH_BOTH);
 
-        $res = $pdo->execute(array($id));
+        $res = $pdo->execute(array());
 
         if($res){
 
@@ -87,7 +87,7 @@ for($i = 0; $i <count($observables); $i++) {
                             <label class="form-check-label">'.$obs[0]->getNom().'</label></br>
                                 <label class="form-check-label"><input class="form-check-input" type="radio" name="'. $obs[0]->getId() .'" value="1"> Non acquis</label>
                                 <label class="form-check-label"><input class="form-check-input" type="radio" name="'. $obs[0]->getId() .'" value="2" checked> En cours</label>
-                                <label class="form-check-label"><input class="form-check-input" type="radio" name="'. $obs[0]->getId() .'" value="3"> Acquis</label>
+                                <label class="form-check-label" style="margin-bottom:20px;"><input class="form-check-input" type="radio" name="'. $obs[0]->getId() .'" value="3"> Acquis</label>
                          </div>';
     }
     else {
@@ -95,7 +95,7 @@ for($i = 0; $i <count($observables); $i++) {
                             <label class="form-check-label">'.$obs[0]->getNom().'</label></br>
                                 <label class="form-check-label"><input class="form-check-input" type="radio" name="'. $obs[0]->getId() .'" value="1"> Non acquis</label>
                                 <label class="form-check-label"><input class="form-check-input" type="radio" name="'. $obs[0]->getId() .'" value="2"> En cours</label>
-                                <label class="form-check-label"><input class="form-check-input" type="radio" name="'. $obs[0]->getId() .'" value="3" checked> Acquis</label>
+                                <label class="form-check-label" style="margin-bottom:20px;"><input class="form-check-input" type="radio" name="'. $obs[0]->getId() .'" value="3" checked> Acquis</label>
                          </div>';
     }
 
@@ -105,7 +105,7 @@ else {
     $html .= '<p>Pas d&apos;observable(s) pour cette catégorie</p>';
 }
 
-$html .= '<input type="text" name="id" value="{$id}" style="margin-left:-99999999px;"></div></div><button class="btn btn-primary" type="submit">Sélectionner</button></form>';
+$html .= '<input type="text" name="id" value="'.$id.'" style="margin-left:-99999999px;"></div></div><button class="btn btn-primary" type="submit">Sélectionner</button></form>';
 }
 else {echo 'Impossible';}
 
