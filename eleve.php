@@ -48,7 +48,7 @@ if(isset($_GET['id'])) {
                 <div class="form-group container" style="margin:10px;">
                     <form action="observableEleve.php" method="GET">
                         <div class="form-group">
-                          <label>Choisissez une catégorie pour modifier l'observable de l'élève :</label>
+                          <label>Choisissez une catégorie pour modifier les observables de l'élève :</label>
                           <select class="form-control" name="categorie"> 
 HTML;
 
