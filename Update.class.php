@@ -62,7 +62,7 @@ SQL;
         if($chp)
 
             $requete =<<<SQL
-UPDATE CATEGORIE SET $chp = $value
+UPDATE CATEGORIE SET $chp = '{$value}'
 WHERE IDCATG = $id
 SQL;
 

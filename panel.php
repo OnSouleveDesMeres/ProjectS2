@@ -18,6 +18,7 @@ require_once 'createAccount.php';
 require_once 'myPDO.class.php';
 require_once 'randomGenerator.php';
 require_once 'initObsStudent.php';
+require_once 'Update.class.php';
 
 if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])){
     if (isset($_GET) && !empty($_GET)) {
@@ -61,6 +62,13 @@ SQL;
             $pdo->execute(array($_GET["deleteProf"]));
 
         }
+
+        if(isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['nom']) && !empty($_GET['nom'])){
+
+            Update::updateCategory($_GET['categorie'], 'LIBCATG', $_GET['nom']);
+
+        }
+
     }
     if (isset($_POST) && !empty($_POST)){
         if (isset($_POST["nome"]) && !empty($_POST["nome"]) && isset($_POST["prenome"]) && !empty($_POST["prenome"])

@@ -4,6 +4,7 @@ require_once 'navbar.php';
 require_once 'footer.php';
 require_once 'Observable.class.php';
 require_once 'Categorie.class.php';
+require_once 'Update.class.php';
 
 if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])) {
     $w = new Webpage('Eleves');
@@ -20,6 +21,12 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
 
     $html = '';
 
+    if(isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['nom']) && !empty($_GET['nom'])){
+
+        Update::updateCategory($_GET['categorie'], 'LIBCATG', $_GET['nom']);
+
+    }
+
     if (isset($_GET['id'])) {
         
         
@@ -31,7 +38,7 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
         $html .= <<<HTML
         
     <div style="height:15px;"></div>
-    <form name="Observable" method="GET" action="updateObservable.php">
+    <form name="Observable" method="GET" action="panel.php">
 
             <div class="offset-md-3 col-sm-6"> 
             <label>Nom :</label>               
@@ -54,11 +61,9 @@ HTML;
 		</div>
 		</div>
 		  </div>
-		  	<div class="input-group offset-sm-3 col-sm-6">
-            	<input type="text" name="idObs" style="margin-left:-9999999px;" value="{$id}">
-            </div>
+            <div style="height:15px;"></div>
            <div class="input-group">
-                <button id="editObservable" type="submit" class="btn btn-success offset-sm-4 col-sm-4">Valider</button>
+                <button id="editCatg" type="submit" class="btn btn-success offset-sm-4 col-sm-4">Valider</button>
             </div>
             
             <div style="height:15px;"></div>

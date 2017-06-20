@@ -35,7 +35,7 @@ if (isset($_COOKIE["profId"])) {
         $numtel2 = $_POST['telephone2'];
         if(isset($_FILES['avatar']) && !empty($_FILES['avatar'])){
             $dossier = 'img/users/';
-            $taille_maxi = 9999999999999;
+            $taille_maxi = 999999999999999;
             $taille = filesize($_FILES['avatar']['tmp_name']);
             $extensions = array('.png', '.gif', '.jpg', '.jpeg');
             $extension = strrchr($_FILES['avatar']['name'], '.');

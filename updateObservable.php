@@ -8,9 +8,9 @@ if (isset($_COOKIE["profId"])) {
     $db = myPDO::getInstance();
         
     if(isset($_GET["nom"]) && isset($_GET["categorie"]) && isset($_GET["idObs"])) {
-    
+
     $nom = $_GET['nom'];
-    $categorie = $_GET['categorie']; 
+    $categorie = $_GET['categorie'];
     $idObs = $_GET['idObs'];
         $requete = <<<SQL
         UPDATE OBSERVABLE SET LIBOBS = '{$nom}', IDCATG = '{$categorie}'
