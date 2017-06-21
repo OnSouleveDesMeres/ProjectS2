@@ -1,0 +1,13 @@
+{
+    "name": "sylvain/project-s2",
+    "require": {
+        "tecnickcom/tc-lib-pdf": "dev-master",
+        "tecnickcom/tcpdf": "^6.2"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:tecnickcom/tc-lib-pdf.git"
+        }
+    ]
+}

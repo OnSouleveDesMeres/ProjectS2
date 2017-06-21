@@ -81,6 +81,29 @@ SQL;
 
     }
 
+    public static function getFirst(){
+
+        $requete =<<<SQL
+SELECT *
+FROM CATEGORIE 
+WHERE IDCATG = 1
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->setFetchMode(PDO::FETCH_CLASS, 'Categorie');
+
+        $res = $pdo->execute(array());
+
+        if ($res){
+
+            $datas = $pdo->fetchAll();
+            return $datas;
+
+        }
+
+    }
+
     public function getObs(){
 
         $requete =<<<SQL
@@ -104,6 +127,34 @@ SQL;
         else{
 
             throw new Exception('Erreur, cette observable ne peut être trouvée');
+
+        }
+
+    }
+
+    public function getCatg(){
+
+        $requete =<<<SQL
+SELECT *
+FROM CATEGORIE c
+WHERE CAT_IDCATG = ?
+SQL;
+
+        $pdo = myPDO::getInstance()->prepare($requete);
+
+        $pdo->setFetchMode(PDO::FETCH_CLASS, 'Categorie');
+
+        $res = $pdo->execute(array($this->getId()));
+
+        if ($res){
+
+            $datas = $pdo->fetchAll();
+            return $datas;
+
+        }
+        else{
+
+            throw new Exception('Erreur, cette catégorie ne peut être trouvée');
 
         }
 
