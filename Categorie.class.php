@@ -138,6 +138,7 @@ SQL;
 SELECT *
 FROM CATEGORIE c
 WHERE CAT_IDCATG = ?
+ORDER BY CAT_IDCATG
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
