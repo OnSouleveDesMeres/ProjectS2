@@ -21,6 +21,9 @@ require_once 'initObsStudent.php';
 require_once 'Update.class.php';
 
 if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isset($_COOKIE["profId"]) && !empty($_COOKIE["profId"])){
+
+    $datas = null;
+
     if (isset($_GET) && !empty($_GET)) {
         if (isset($_GET["deleteStudent"]) && !empty($_GET["deleteStudent"])) {
             $requete = <<<SQL
@@ -66,6 +69,28 @@ SQL;
         if(isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['nom']) && !empty($_GET['nom'])){
 
             Update::updateCategory($_GET['categorie'], 'LIBCATG', $_GET['nom']);
+
+        }
+
+        if(isset($_GET['search']) && !empty($_GET['search'])){
+
+            $rq =<<<SQL
+SELECT *
+FROM ELEVE
+WHERE IDCLASSE = ?
+SQL;
+
+            $pdo = myPDO::getInstance()->prepare($rq);
+
+            $pdo->setFetchMode(PDO::FETCH_CLASS, 'Eleve');
+
+            $res = $pdo->execute(array($_GET['search']));
+
+            if ($res){
+
+                $datas = $pdo->fetchAll();
+
+            }
 
         }
 
@@ -136,6 +161,12 @@ SQL;
         $html->appendContent(navbar());
 
         $students = Eleve::getAll();
+
+        if($datas != null){
+
+            $students = $datas;
+
+        }
         $liste = '';
         foreach ($students as $eleve){
 
@@ -212,8 +243,16 @@ SQL;
                     <h1>Affichage des élèves :</h1>
             
                     <div style="height:25px;"></div>
-                        <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
+                        <div style="overflow-x:auto;" class="btn-group offset-sm-2 col-sm-8" role="group" aria-label="bouton trier par...">
                             <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher un élève ?">
+                            <form method="get" action="panel.php" class="col-sm-6">
+                                <select name="search" class="col l10 m10 s12" id="classe">
+                                    <option value="" disabled selected>Chercher par classe</option>
+                                    <option value="1">Petite section</option>
+                                    <option value="2">Moyenne section</option>
+                                    <option value="3">Grande section</option>
+                                </select>
+                            </form>
                         </div>
                     <section class="row text-center placeholders">
                         <div style="overflow-x:auto;" class="col-sm-12 placeholder">
@@ -446,6 +485,13 @@ HTML;
         $html->appendJsUrl('https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js');
         $html->appendJsUrl('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js');
         $html->appendJsUrl('js/javascript.js');
+        $html->appendContent('<script type="text/javascript">
+  jQuery(function() {
+    jQuery("#classe").change(function() {
+        this.form.submit();
+    });
+});
+</script>');
 
         echo $html->toHTML();
 
