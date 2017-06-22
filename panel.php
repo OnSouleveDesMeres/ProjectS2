@@ -243,9 +243,9 @@ SQL;
                     <h1>Affichage des élèves :</h1>
             
                     <div style="height:25px;"></div>
-                        <div style="overflow-x:auto;" class="btn-group offset-sm-2 col-sm-8" role="group" aria-label="bouton trier par...">
-                            <form method="get" action="panel.php" class="col-sm-6">
-                                <select name="search" class="col l10 m10 s12" id="classe">
+                        <div style="overflow-x:auto;" class="btn-group offset-sm-5 col-sm-4" role="group" aria-label="bouton trier par...">
+                            <form method="get" action="panel.php" class="class="form-group"col-sm-4">
+                                <select name="search" class="form-control" id="classe">
                                     <option value="" disabled selected>Chercher par classe</option>
                                     <option value="">Afficher toutes les classes</option>
                                     <option value="1">Petite section</option>
@@ -299,7 +299,7 @@ SQL;
                                         <input type="date" name="datense" class="form-control" placeholder="Date de naissance (AAA-MM-JJ)" required pattern="19[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[01])">
                                     </div>
                                     <div class="col-sm-6">
-                                        <select class="custom-select" name="classe" required>
+                                        <select id="selectclasse" class="custom-select" name="classe" required>
                                             <option value="" selected>Choisissez une classe</option>
                                             <option value="1">Petite section</option>
                                             <option value="2">Moyenne section</option>
