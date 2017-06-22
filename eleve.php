@@ -66,7 +66,8 @@ $html .= <<<HTML
                           <input type="text" name="id" value="{$id}" style="margin-left:-99999999px;">
                     </form>
                 </div>
-            </div>
+                <a href="" style="margin-top:50px;"><button class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Afficher en PDF</button></a>
+            </div>            
         </div>
     </div>
 HTML;
