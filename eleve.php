@@ -4,6 +4,7 @@ require_once 'navbar.php';
 require_once 'footer.php';
 require_once 'Eleve.class.php';
 require_once 'Categorie.class.php';
+require_once 'Classe.class.php';
 
 $w = new Webpage('Eleves');
 
@@ -23,6 +24,7 @@ if(isset($_GET['id'])) {
     $id = $_GET['id'];
     $eleve = Eleve::createFromId($id);
     $categories = Categorie::getAll();
+    $classe = Classe::createFromId($eleve[0]->getIdClass());
 
     $html = <<<HTML
         <div class="row">
@@ -30,6 +32,7 @@ if(isset($_GET['id'])) {
                 <ul class="list-group">
                   <li class="list-group-item">Nom : {$eleve[0]->getNom()}</li>
                   <li class="list-group-item">Prénom : {$eleve[0]->getPrenom()}</li>
+                  <li class="list-group-item">Classe : {$classe[0]->getNom()}</li>
                   <li class="list-group-item">Email : {$eleve[0]->getEmail()}</li>
                   <li class="list-group-item">Téléphone : {$eleve[0]->getNumeroTel()}</li>
                   <li class="list-group-item">Ville : {$eleve[0]->getVille()}</li>
