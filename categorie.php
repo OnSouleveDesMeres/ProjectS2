@@ -21,9 +21,11 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
 
     $html = '';
 
-    if(isset($_GET['categorie']) && !empty($_GET['categorie']) && isset($_GET['nom']) && !empty($_GET['nom'])){
+    if(isset($_GET['categorieSup']) && !empty($_GET['categorieSup']) && isset($_GET['idCatg']) && !empty($_GET['idCatg']) && isset($_GET['nom']) && !empty($_GET['nom'])){
 
-        Update::updateCategory($_GET['categorie'], 'LIBCATG', $_GET['nom']);
+        Update::updateCategory($_GET['idCatg'], 'LIBCATG', $_GET['nom']);
+        Update::updateCategory($_GET['idCatg'], 'CAT_IDCATG', $_GET['categorieSup']);
+        header('Location: panel.php');
 
     }
 
@@ -32,27 +34,30 @@ if(isset($_COOKIE["profFirstName"]) && !empty($_COOKIE["profFirstName"]) && isse
         
         $id = $_GET['id'];
         $categorie = Categorie::createFromId($id);
+
+        var_dump($categorie[0]->getIdSup());
+
+        if($categorie[0]->getIdSup() != null){
         $categorieSup = Categorie::createFromId($categorie[0]->getIdSup());
-        $categorieSup = Categorie::getAll();
-        
+        $categories = Categorie::getAll();
         $html .= <<<HTML
         
     <div style="height:15px;"></div>
-    <form name="Observable" method="GET" action="panel.php">
+    <form name="Observable" method="GET" action="categorie.php">
 
             <div class="offset-md-3 col-sm-6"> 
             <label>Nom :</label>               
             </div>
-            
-            <div class="input-group offset-sm-3 col-sm-6">            	
+            <div class="input-group offset-sm-3 col-sm-6">     
+                <input class="form-control col-sm-2" name="idCatg" type="text" placeholder="{$id}" value="{$id}" readonly="readonly">       	
                 <input type="text" name="nom" class="form-control" placeholder="Nom" value="{$categorie[0]->getNom()}" required>
             </div>
             <div class="offset-md-3 col-sm-6">
             <label>Catégorie :</label>  
-			    <select class="form-control" name="categorie" id="categorie" value="{$categorieSup[0]->getNom()}">
+			    <select class="form-control" name="categorieSup">
 			    	<option value="{$categorieSup[0]->getId()}">{$categorieSup[0]->getNom()}</option>
 HTML;
-        foreach ($categorieSup as $c) {
+        foreach ($categories as $c) {
             $html .= '<option value="' . $c->getId() . '">' . $c->getNom() . '</option>';
         }
 
@@ -70,6 +75,10 @@ HTML;
         </form>
 
 HTML;
+        }
+        else{
+            header('Location: panel.php');
+        }
     } else {
         $html .= '<h1>Erreur observable introuvable</h1>';
     }
