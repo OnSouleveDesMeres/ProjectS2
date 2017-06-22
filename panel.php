@@ -244,10 +244,10 @@ SQL;
             
                     <div style="height:25px;"></div>
                         <div style="overflow-x:auto;" class="btn-group offset-sm-2 col-sm-8" role="group" aria-label="bouton trier par...">
-                            <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher un élève ?">
                             <form method="get" action="panel.php" class="col-sm-6">
                                 <select name="search" class="col l10 m10 s12" id="classe">
                                     <option value="" disabled selected>Chercher par classe</option>
+                                    <option value="">Afficher toutes les classes</option>
                                     <option value="1">Petite section</option>
                                     <option value="2">Moyenne section</option>
                                     <option value="3">Grande section</option>
@@ -256,7 +256,7 @@ SQL;
                         </div>
                     <section class="row text-center placeholders">
                         <div style="overflow-x:auto;" class="col-sm-12 placeholder">
-                        <table class="table table-hover results">
+                        <table class="table table-hover">
                                 <thead class="thead-inverse  text-center">
                                     <tr>
                                         <th>Nom</th>
@@ -269,9 +269,6 @@ SQL;
                                         <th>Date de naissance</th>
                                         <th>Editer profil</th>
                                         <th>Supprimer</th>
-                                    </tr>
-                                    <tr class="alert-warning no-result">
-                                        <td colspan="10"><i class="fa fa-warning"></i> Non trouvé</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -364,12 +361,15 @@ SQL;
         
                         <section class="row text-center placeholders">
                             <div style="overflow-x:auto;" class="col-sm-12 placeholder">
-                                <table class="table">
-                                    <thead class="thead-inverse  text-center">
+                                <table class="table table-hover results">
+                                    <thead class="thead-inverse text-center">
                                         <tr>
                                             <th>Nom observable</th>
                                             <th>Modifier</th>
                                             <th>Supprimer</th>
+                                        </tr>
+                                        <tr class="alert-warning no-result">
+                                            <td colspan="10"><i class="fa fa-warning"></i> Non trouvé</td>
                                         </tr>
                                     </thead>
                                     <tbody>
