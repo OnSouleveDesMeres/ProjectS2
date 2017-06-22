@@ -72,6 +72,28 @@ SQL;
 
         }
 
+                if(isset($_GET['search']) && !empty($_GET['search'])){
+
+                        $rq =<<<SQL
+SELECT *
+FROM ELEVE
+WHERE IDCLASSE = ?
+SQL;
+
+            $pdo = myPDO::getInstance()->prepare($rq);
+
+            $pdo->setFetchMode(PDO::FETCH_CLASS, 'Eleve');
+
+            $res = $pdo->execute(array($_GET['search']));
+
+            if ($res){
+
+                $datas = $pdo->fetchAll();
+
+            }
+
+        }
+
     }
     if (isset($_POST) && !empty($_POST)){
         if (isset($_POST["nome"]) && !empty($_POST["nome"]) && isset($_POST["prenome"]) && !empty($_POST["prenome"])
