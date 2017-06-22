@@ -83,7 +83,7 @@ if (isset($_COOKIE['profId']) && !empty($_COOKIE['profId'])){
                 if(count($categories) == 0){
                     $obs = $category->getObs();
                     foreach ($obs as $o){
-                        $tab .= '<tr><td colspan="1"></td><td colspan="5">'.$o->getNom().'</td>';
+                        $tab .= '<tr><td colspan="1"></td><td colspan="5"><span></span>'.$o->getNom().'</td>';
                         $num = Validation::createFrom2Param($id, $o->getId());
                         $tab .= selectContentPDF($num[0]->getValide());
                     }
@@ -91,7 +91,7 @@ if (isset($_COOKIE['profId']) && !empty($_COOKIE['profId'])){
                 }
                 else{
                     foreach ($categories as $categorie){
-                        $tab .= '<tr style="background-color: #eceeef"><td colspan="6" style="border-right: 1px solid black; border-left: 1px solid black;"><p style="text-align: left;"> '.$categorie->getNom().'</p></td>
+                        $tab .= '<tr style="background-color: #eceeef"><td colspan="6" style="border-right: 1px solid black; border-left: 1px solid black;"><p style="text-align: left;"><span></span>'.$categorie->getNom().'</p></td>
 <td colspan="2" style="border-right: 1px solid black; border-left: 1px solid black;"><p style="text-align: center;">Non acquis</p></td>
 <td colspan="2" style="border-right: 1px solid black; border-left: 1px solid black;"><p style="text-align: center;">En cours d\'acquisition</p></td>
 <td colspan="2" style="border-right: 1px solid black; border-left: 1px solid black;"><p style="text-align: center;">Acquis</p></td></tr>';
@@ -99,7 +99,7 @@ if (isset($_COOKIE['profId']) && !empty($_COOKIE['profId'])){
                         if(count($catgF) == 0) {
                             $obs = $categorie->getObs();
                             foreach ($obs as $o) {
-                                $tab .= '<tr><td colspan="1" style="border-bottom: 1px solid black; border-top: 1px solid black;"></td><td colspan="5" style="border-bottom: 1px solid black; border-top: 1px solid black;">'.$o->getNom().'</td>';
+                                $tab .= '<tr><td colspan="1" style="border-bottom: 1px solid black; border-top: 1px solid black;"></td><td colspan="5" style="border-bottom: 1px solid black; border-top: 1px solid black;"><p>'.$o->getNom().'</p></td>';
                                 $num = Validation::createFrom2Param($id, $o->getId());
                                 $tab .= selectContentPDF($num[0]->getValide());
                             }
@@ -112,7 +112,7 @@ if (isset($_COOKIE['profId']) && !empty($_COOKIE['profId'])){
                                 if(count($cf) == 0) {
                                     $obs = $catfille->getObs();
                                     foreach ($obs as $o) {
-                                        $tab .= '<tr><td colspan="1" style="border-bottom: 1px solid black; border-top: 1px solid black;"></td><td colspan="5" style="border-bottom: 1px solid black; border-top: 1px solid black;">'.$o->getNom().'</td>';
+                                        $tab .= '<tr><td colspan="1" style="border-bottom: 1px solid black; border-top: 1px solid black;"></td><td colspan="5" style="border-bottom: 1px solid black; border-top: 1px solid black;"><p style="font-size: 10px">'.$o->getNom().'</p></td>';
                                         $num = Validation::createFrom2Param($id, $o->getId());
                                         $tab .= selectContentPDF($num[0]->getValide());
                                     }
