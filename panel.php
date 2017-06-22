@@ -188,7 +188,7 @@ SQL;
 
         $listeCatg = '';
         $tabCatg = '';
-        $catg = Categorie::getAll();
+        $catg = Categorie::getAllExpectFirst();
         foreach ($catg as $category){
             $listeCatg .= "<option value='{$category->getId()}'>{$category->getNom()}</option>";
             $tabCatg .= "<tr><td>{$category->getNom()}</td><td><a href='categorie.php?id={$category->getId()}'>Modifier</a></td><td><a href='panel.php?deleteCatg={$category->getId()}'>Supprimer</a></td></tr>";
