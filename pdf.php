@@ -20,7 +20,7 @@ if (isset($_COOKIE['profId']) && !empty($_COOKIE['profId'])){
     $mois = date('n');
     $annee2 = date('Y');
     $annee1 = $annee2 - 1;
-    if($mois >= 9 && $mois < 12){
+    if($mois >= 8 && $mois <= 12){
         $annee1 = date('Y');
         $annee2 = $annee1 + 1;
     }

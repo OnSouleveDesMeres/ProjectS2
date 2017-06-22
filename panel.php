@@ -72,28 +72,6 @@ SQL;
 
         }
 
-        if(isset($_GET['search']) && !empty($_GET['search'])){
-
-            $rq =<<<SQL
-SELECT *
-FROM ELEVE
-WHERE IDCLASSE = ?
-SQL;
-
-            $pdo = myPDO::getInstance()->prepare($rq);
-
-            $pdo->setFetchMode(PDO::FETCH_CLASS, 'Eleve');
-
-            $res = $pdo->execute(array($_GET['search']));
-
-            if ($res){
-
-                $datas = $pdo->fetchAll();
-
-            }
-
-        }
-
     }
     if (isset($_POST) && !empty($_POST)){
         if (isset($_POST["nome"]) && !empty($_POST["nome"]) && isset($_POST["prenome"]) && !empty($_POST["prenome"])
@@ -139,8 +117,8 @@ SQL;
             $pdo->setFetchMode(PDO::FETCH_CLASS, 'Professeur');
 
             if($pdo->execute(array($_POST["nomp"], $_POST["prenomp"]))){
-                $datas = $pdo->fetchAll();
-                $id = $datas[0]->getId();
+                $d = $pdo->fetchAll();
+                $id = $d[0]->getId();
                 Insert::insertIntoUSer($id, sha1($rnd));
                 emailActivation($_POST["email"], $id, $rnd);
 
