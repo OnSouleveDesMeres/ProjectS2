@@ -7,17 +7,14 @@
  */
 
 function selectContentPDF($num){
-    $html = '<td colspan="2" style="border: 1px solid black"><h1 style="text-align: center;">X</h1></td>
-<td colspan="2" style="border: 1px solid black"></td>
+    $html = '<td colspan="2" style="border: 1px solid black"></td>
 <td colspan="2" style="border: 1px solid black"></td></tr>';
     if($num == '2'){
-        $html ='<td colspan="2" style="border: 1px solid black"></td>
-<td colspan="2" style="border: 1px solid black"><h1 style="text-align: center;">X</h1></td>
+        $html ='<td colspan="2" style="border: 1px solid black"><h1 style="text-align: center;">X</h1></td>
 <td colspan="2" style="border: 1px solid black"></td></tr>';
     }
     else if($num == '3'){
         $html ='<td colspan="2" style="border: 1px solid black"></td>
-<td colspan="2" style="border: 1px solid black"></td>
 <td colspan="2" style="border: 1px solid black"><h1 style="text-align: center;">X</h1></td></tr>';
 
     }
