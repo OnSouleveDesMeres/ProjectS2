@@ -72,7 +72,7 @@ SQL;
 
         }
 
-                if(isset($_GET['search']) && !empty($_GET['search'])){
+            if(isset($_GET['search']) && !empty($_GET['search'])){
 
                         $rq =<<<SQL
 SELECT *
@@ -182,7 +182,7 @@ SQL;
         $listeObs = '';
         foreach ($observables as $obs){
 
-            $listeObs .= "<tr><td>{$obs->getNom()}</td><td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
+            $listeObs .= "<tr><td><a href='observableForStudent.php?id={$obs->getId()}'>{$obs->getNom()}</a></td><td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
 
         }
 
@@ -243,7 +243,7 @@ SQL;
                     <h1>Affichage des élèves :</h1>
             
                     <div style="height:25px;"></div>
-                        <div style="overflow-x:auto;" class="btn-group offset-sm-5 col-sm-4" role="group" aria-label="bouton trier par...">
+                        <div style="overflow-x:auto;" class="btn-group offset-sm-4" role="group" aria-label="bouton trier par...">
                             <form method="get" action="panel.php" class="class="form-group"col-sm-4">
                                 <select name="search" class="form-control" id="classe">
                                     <option value="" disabled selected>Chercher par classe</option>
@@ -417,9 +417,6 @@ SQL;
                     <div class="tab-pane active" id="recapobservable" role="tabpanel">
     
                     <div style="height:25px;"></div>
-                        <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
-                            <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher une catégorie ?">
-                        </div>
         
                         <section class="row text-center placeholders">
                             <div style="overflow-x:auto;" class="col-sm-12 placeholder">

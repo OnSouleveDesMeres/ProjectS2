@@ -50,8 +50,8 @@ if (isset($_COOKIE["profId"])) {
         WHERE idprof={$id}
 SQL;
         $db->query($requete);
-        setcookie("profFirstName", $prenom, time()+20*60);
-        setcookie("profId", $_COOKIE["profId"], time()+20*60);
+        setcookie("profFirstName", $prenom, 0);
+        setcookie("profId", $_COOKIE["profId"], 0);
     }
     
 }

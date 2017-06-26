@@ -27,9 +27,6 @@ function getContent(){
                 <h1>Affichage des professeurs :</h1>
         
                 <div style="height:25px;"></div>
-                    <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
-                        <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher un professeur ?">
-                    </div>
 
                 <div class="tab-pane active" id="recapprof" role="tabpanel">
     
