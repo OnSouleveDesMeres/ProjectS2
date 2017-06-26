@@ -27,8 +27,9 @@ if(isset($_GET['id'])) {
     $classe = Classe::createFromId($eleve[0]->getIdClass());
 
     $html = <<<HTML
+    <div class="col-sm-12">
         <div class="row">
-            <div class="offset-sm-1" style="margin-top:50px;">
+            <div class="col-sm-12 col-md-4" style="margin-top:50px;">
                 <ul class="list-group">
                   <li class="list-group-item">Nom : {$eleve[0]->getNom()}</li>
                   <li class="list-group-item">Prénom : {$eleve[0]->getPrenom()}</li>
@@ -47,29 +48,32 @@ if(isset($_GET['id'])) {
                   <li class="text-center" style="list-style:none;"><a href="profileEleve.php?id={$id}"><button class="btn btn-primary">Editer le profil de l&apos;élève</button></a></li> 
                 </ul>
             </div>
-            <div id="card3" class = "offset-sm-1 card" style="margin-top:50px;">
-                <div class="form-group container" style="margin:10px;">
+            <div class="col-sm-12 col-md-6 offset-md-1" style="margin-top:50px;">
+                <div class="form-group container">
                     <form action="observableEleve.php" method="GET">
-                        <div class="form-group">
-                          <label>Choisissez une catégorie pour modifier les observables de l'élève :</label>
-                          <select class="form-control" name="categorie"> 
+                        <div class="row">
+                            <div class="form-group">
+                              <label>Choisissez une catégorie pour modifier les observables de l'élève :</label>
+                              <select class="form-control" name="categorie"> 
 HTML;
 
-foreach ($categories as $c){
-  $html .= '<option value="'.$c->getId().'">'.$c->getNom().'</option>';
-}
+    foreach ($categories as $c){
+      $html .= '<option value="'.$c->getId().'">'.$c->getNom().'</option>';
+    }
 
-$html .= <<<HTML
-                          </select>
+    $html .= <<<HTML
+                              </select>
                           </div>
                           <button class="btn btn-primary" type="submit">Sélectionner</button>
-                          <input type="text" name="id" value="{$id}" style="margin-left:-99999999px;">
+                      </div>
+                      <input type="text" name="id" value="{$id}" style="margin-left:-99999999px;">
                     </form>
                 </div>
-                <a href="pdf.php?id={$eleve[0]->getId()}" style="margin-top:50px;"><button class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Afficher le livret de l'élève en PDF</button></a>
-            </div>            
+                <a href="pdf.php?id={$eleve[0]->getId()}"><button class="btn btn-danger col-sm-12 col-md-4 offset-md-3"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Afficher le livret en PDF</button></a>
+            </div>
         </div>
     </div>
+    <div style="height:100px;"></div>
 HTML;
 }
 else{
