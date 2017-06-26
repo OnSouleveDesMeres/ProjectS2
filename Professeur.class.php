@@ -97,6 +97,7 @@ SQL;
         $requete =<<<SQL
 SELECT *
 FROM PROFESSEUR
+WHERE IDPROF != 2
 SQL;
 
         $pdo = myPDO::getInstance()->prepare($requete);
