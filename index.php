@@ -84,32 +84,26 @@ $tps = count($ps);
 $tms = count($ms);
 $tgs = count($gs);
 
-    	$img = '<table class="text-left"><tr><th class="text-center">Petite section</th><th class="text-center">Moyenne section</th><th class="text-center">Grande section</th></tr>';
-    for ($i = 0; $i<$taille; $i++) {
-    	$img .= '<tr>';
-    		if ($i < $tps) {
-    		 $img .= '<td class="col-sm-4" style="border-right:solid;"><a href="eleve.php?id='.$ps[$i]->getId().'" style="color:black;">' . $ps[$i]->getNom() . " " . $ps[$i]->getPrenom() . '</a></td>';
-    		}
-    		else {
-    		 $img .= '<td style="border-right:solid;"></td>';
-    		}
-    		if ($i < $tms) {
-    		 $img .='<td class="col-sm-4" style="border-right:solid;"><a href="eleve.php?id=' . $ms[$i]->getId() . '" style="color:black;">' . $ms[$i]->getNom() . " " . $ms[$i]->getPrenom() . '</a></td>';
-    		}
-    		else {
-    		 $img .= '<td style="border-right:solid;"></td>';
-    		}
-    		if ($i < $tgs) {
-    		 $img .= '<td class="col-sm-4"><a href="eleve.php?id=' . $gs[$i]->getId() . '" style="color:black;">' . $gs[$i]->getNom() . " " . $gs[$i]->getPrenom() . '</a></td>';
-    		}
-    		else {
-    		 $img .= '<td></td>';
-    		}
-                $img .= '</tr>';
+    $img .= '<div class="row">';
 
-    		}
+    $petitesection = '<div class="col-md-4 col-sm-12" style="border-right: 1px solid black; border-left: 1px solid black;"><h5>Petite section</h5>';
+    foreach ($ps as $petite){
+        $petitesection .= "<a href='eleve.php?id={$petite->getId()}'><p class='text-left' style='color: black'>{$petite->getNom()} {$petite->getPrenom()}</p></a>";
+    }
+    $moyennesection = '<div class="text-center col-md-4 col-sm-12" style="border-right: 1px solid black; border-left: 1px solid black;"><h5>Moyenne section</h5>';
+    foreach ($ms as $moyenne){
+        $moyennesection .= "<a href='eleve.php?id={$moyenne->getId()}'><p class='text-left' style='color: black'>{$moyenne->getNom()} {$moyenne->getPrenom()}</p></a>";
+    }
+    $grandesection = '<div class="text-center col-md-4 col-sm-12" style="border-right: 1px solid black; border-left: 1px solid black;"><h5>Grande section</h5>';
+    foreach ($gs as $grande){
+        $grandesection .= "<a href='eleve.php?id={$grande->getId()}'><p class='text-left' style='color: black'>{$grande->getNom()} {$grande->getPrenom()}</p></a>";
+    }
 
-    	$img.= '</table>';
+    $petitesection .= "</div>";
+    $moyennesection .= "</div>";
+    $grandesection .= "</div>";
+
+        $img .= $petitesection.$moyennesection.$grandesection.'</div>';
 }
 
 
@@ -134,6 +128,9 @@ $html .= '<div class="col-md-12" style="height:50px;"></div>
                         '.$img.'
                     </div>
                 </div>
+            
+            <div class="col-md-12" style="height:50px;"></div>
+            
             </div>
 
             <div id="card2" class="offset-md-1 col-md-3 offset-md-1">
