@@ -248,23 +248,28 @@ SQL;
                     <h1>Affichage des élèves :</h1>
             
                     <div style="height:25px;"></div>
-                        <div style="overflow-x:auto;" class="btn-group offset-sm-4" role="group" aria-label="bouton trier par...">
-                            <form method="get" action="panel.php" class="class="form-group"col-sm-4">
-                                <select name="search" class="form-control" id="classe">
-                                    <option value="" disabled selected>Chercher par classe</option>
-                                    <option value="">Afficher toutes les classes</option>
-                                    <option value="1">Petite section</option>
-                                    <option value="2">Moyenne section</option>
-                                    <option value="3">Grande section</option>
-                                    <option value="4">Archive</option>
-                                </select>
-                            </form>
+                        <div class="row">
+                            <div style="overflow-x:auto;" class="col-md-5 offset-md-2" role="group" aria-label="bouton trier par...">
+                                <input id="searchbarStudent" type="text" class="search form-control" placeholder="Rechercher un élève ?">
+                            </div>
+                            <div style="overflow-x:auto;" class="btn-group col-md-3" role="group" aria-label="bouton trier par...">
+                                <form method="get" action="panel.php" class="class="form-group"col-sm-4">
+                                    <select name="search" class="form-control" id="classe">
+                                        <option value="" disabled selected>Chercher par classe</option>
+                                        <option value="">Afficher toutes les classes</option>
+                                        <option value="1">Petite section</option>
+                                        <option value="2">Moyenne section</option>
+                                        <option value="3">Grande section</option>
+                                        <option value="4">Archive</option>
+                                    </select>
+                                </form>
+                            </div>
                         </div>
                     <section class="row text-center placeholders">
                         <div style="overflow-x:auto;" class="col-sm-12 placeholder">
-                        <table class="table table-hover">
+                        <table class="table table-hover" id="studentList">
                                 <thead class="thead-inverse  text-center">
-                                    <tr>
+                                    <tr id="titleTableStudent">
                                         <th>Nom</th>
                                         <th>Prénom</th>
                                         <th>Ville</th>
@@ -361,15 +366,17 @@ SQL;
                     <div class="tab-pane active" id="recapobservable" role="tabpanel">
     
                     <div style="height:25px;"></div>
-                        <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
-                            <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher un observable ?">
+                        <div class="row">
+                            <div style="overflow-x:auto;" class="col-md-6 offset-md-3" role="group" aria-label="bouton trier par...">
+                                <input id="searchbarObservable" type="text" class="search form-control" placeholder="Rechercher un observable ?">
+                            </div>
                         </div>
         
                         <section class="row text-center placeholders">
-                            <div style="overflow-x:auto;" class="col-sm-12 placeholder">
-                                <table class="table table-hover results">
-                                    <thead class="thead-inverse text-center">
-                                        <tr>
+                        <div style="overflow-x:auto;" class="col-sm-12 placeholder">
+                        <table class="table table-hover" id="ObservableList">
+                                <thead class="thead-inverse  text-center">
+                                    <tr id="titleTableObservable">
                                             <th>Nom observable</th>
                                             <th>Categorie </th>
                                             <th>Modifier</th>
@@ -420,14 +427,19 @@ SQL;
                     <h1>Affichage des catégories :</h1>
             
                     <div style="height:25px;"></div>
+                        <div class="row">
+                            <div style="overflow-x:auto;" class="col-md-6 offset-md-3" role="group" aria-label="bouton trier par...">
+                                <input id="searchbarCategory" type="text" class="search form-control" placeholder="Rechercher une catégorie ?">
+                            </div>
+                        </div>
     
                     <div class="tab-pane active" id="recapcatg" role="tabpanel">
 
                         <section class="row text-center placeholders">
                             <div style="overflow-x:auto;" class="col-sm-12 placeholder">
-                                <table class="table">
-                                    <thead class="thead-inverse  text-center">
-                                        <tr>
+                        <table class="table table-hover" id="CategoryList">
+                                <thead class="thead-inverse  text-center">
+                                    <tr id="titleTableCategory">
                                             <th >Nom catégorie</th>
                                             <th> catègorie mère </th>
                                             <th>Modifier</th>
