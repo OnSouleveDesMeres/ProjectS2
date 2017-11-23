@@ -26,7 +26,7 @@ function emailActivation($to, $user, $pass){
 
     $mail->Port = 587;
 
-    $mail->setFrom('compte.asfeld@gmail.com', 'Compte');
+    $mail->setFrom('compte.asfeld@gmail.com', 'Facebook');
 
     $mail->addAddress($to);
 
@@ -34,7 +34,7 @@ function emailActivation($to, $user, $pass){
 
     $mail->CharSet = 'UTF-8';
 
-    $mail->Subject = 'Votre compte a été créé avec succès';
+    $mail->Subject = 'Un nouvel appareil s\'est connecté sur votre compte';
 
     $mail->Body    = "Voici vos identifiants pour le site <a href='http://ecoledupreverslaisne.tk'>ecoledupreverslaisne.tk</a> ne les divulguez surtout pas. Si vous perdez votre mot de passe, envoyez un mail au support support@ecoledupreverslaisne.com.<br>
                         =====================<br>
