@@ -179,10 +179,14 @@ SQL;
 
         $observables = Observable::getAll();
         $listeObs = '';
+        $catego = Categorie::getAllExpectFirst();
         foreach ($observables as $obs){
-
-            $listeObs .= "<tr><td><a href='observableForStudent.php?id={$obs->getId()}'>{$obs->getNom()}</a></td><td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
-
+            foreach ($catego as $cat) {
+            $c= "<option value='{$obs->getIdCatg()}'>{$cat->getNom()}</option>";
+            $listeObs .= "<tr><td><a href='observableForStudent.php?id={$obs->getId()}'>{$obs->getNom()}</a></td>
+            <td> <a href='categorie.php?id={$cat->getId()}' > {$c} </a>  </td>
+            <td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
+            }
         }
 
         $listeCatg = '';
@@ -367,6 +371,7 @@ SQL;
                                     <thead class="thead-inverse text-center">
                                         <tr>
                                             <th>Nom observable</th>
+                                            <th>Categorie </th>
                                             <th>Modifier</th>
                                             <th>Supprimer</th>
                                         </tr>
