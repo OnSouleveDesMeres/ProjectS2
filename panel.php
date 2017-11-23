@@ -435,8 +435,8 @@ SQL;
                         <table class="table table-hover" id="CategoryList">
                                 <thead class="thead-inverse  text-center">
                                     <tr id="titleTableCategory">
-                                            <th >Nom catégorie</th>
-                                            <th> catègorie mère </th>
+                                            <th>Nom catégorie</th>
+                                            <th>Catégorie mère</th>
                                             <th>Modifier</th>
                                             <th>Supprimer</th>
                                         </tr>
