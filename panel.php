@@ -181,18 +181,16 @@ SQL;
         $listeObs = '';
         $catego = Categorie::getAllExpectFirst();
         foreach ($observables as $obs){
-            foreach ($catego as $cat) {
-            $c= "<option value='{$obs->getIdCatg()}'>{$cat->getNom()}</option>";
+            $cat = Categorie::createFromId($obs->getIdCatg());
+            $c= "<option value='{$obs->getIdCatg()}'>{$cat[0]->getNom()}</option>";
             $listeObs .= "<tr><td><a href='observableForStudent.php?id={$obs->getId()}'>{$obs->getNom()}</a></td>
-            <td> <a href='categorie.php?id={$cat->getId()}' > {$c} </a>  </td>
+            <td> <a href='categorie.php?id={$obs->getIdCatg()}' > {$cat[0]->getNom()} </a>  </td>
             <td><a href='observable.php?id={$obs->getId()}'>Modifier</a></td><td><a href='panel.php?deleteObs={$obs->getId()}'>Supprimer</a></td></tr>";
-            }
         }
 
         $listeCatg = '';
         $tabCatg = '';
-        $catg = Categorie::getAllExpectFirst();
-        foreach ($catg as $category){
+        foreach ($catego as $category){
             $listeCatg .= "<option value='{$category->getId()}'>{$category->getNom()}</option>";
             $mere = "<option vale='{$category->getIdSup()}'>{$category->getNom()}</option>";
             $fille = $category->getNom();
@@ -381,9 +379,6 @@ SQL;
                                             <th>Categorie </th>
                                             <th>Modifier</th>
                                             <th>Supprimer</th>
-                                        </tr>
-                                        <tr class="alert-warning no-result">
-                                            <td colspan="10"><i class="fa fa-warning"></i> Non trouvé</td>
                                         </tr>
                                     </thead>
                                     <tbody>

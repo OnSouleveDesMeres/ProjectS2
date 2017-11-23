@@ -1,6 +1,5 @@
 $(document).ready(function () {
     $("#searchbarStudent").keyup(function (event) {
-        console.log($(this).attr("id"));
         var input = $(this);
         var val = input.val();
         if(val == ''){
@@ -14,7 +13,6 @@ $(document).ready(function () {
             isOk = false;
             $(this).find('td').each(function () {
                 var p = $(this);
-                console.log(p.text());
                 var results = p.text().match(new RegExp(regexp, "i"));
 
                 if(results){
@@ -34,9 +32,9 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $("#searchbarObservable").keyup(function (event) {
-        console.log($(this).attr("id"));
         var input = $(this);
         var val = input.val();
+        console.log(val);
         if(val == ''){
             $('#ObservableList tr').show();
         }
@@ -48,7 +46,6 @@ $(document).ready(function () {
             isOk = false;
             $(this).find('td').each(function () {
                 var p = $(this);
-                console.log(p.text());
                 var results = p.text().match(new RegExp(regexp, "i"));
 
                 if(results){
@@ -68,7 +65,6 @@ $(document).ready(function () {
 });
 $(document).ready(function () {
     $("#searchbarCategory").keyup(function (event) {
-        console.log($(this).attr("id"));
         var input = $(this);
         var val = input.val();
         if(val == ''){
@@ -82,7 +78,6 @@ $(document).ready(function () {
             isOk = false;
             $(this).find('td').each(function () {
                 var p = $(this);
-                console.log(p.text());
                 var results = p.text().match(new RegExp(regexp, "i"));
 
                 if(results){
