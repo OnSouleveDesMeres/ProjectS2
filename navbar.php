@@ -11,7 +11,7 @@ function navbar() {
                 <a class="navbar-brand" href="index.php">Accueil</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="panel.php"><i class="fa fa-star" aria-hidden="true"></i> Pannel Admin</a>
+                        <a class="nav-link" href="panel.php"><i class="fa fa-star" aria-hidden="true"></i>Gestionnaire</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="informations.php"><i class="fa fa-info-circle" aria-hidden="true"></i> Informations</a>

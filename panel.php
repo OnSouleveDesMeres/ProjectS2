@@ -5,7 +5,6 @@
  * Date: 14/06/17
  * Time: 21:02
  */
-
 require_once 'webpage.class.php';
 require_once 'navbar.php';
 require_once 'footer.php';
@@ -191,7 +190,9 @@ SQL;
         $catg = Categorie::getAllExpectFirst();
         foreach ($catg as $category){
             $listeCatg .= "<option value='{$category->getId()}'>{$category->getNom()}</option>";
-            $tabCatg .= "<tr><td>{$category->getNom()}</td><td><a href='categorie.php?id={$category->getId()}'>Modifier</a></td><td><a href='panel.php?deleteCatg={$category->getId()}'>Supprimer</a></td></tr>";
+            $mere = "<option vale='{$category->getIdSup()}'>{$category->getNom()}</option>";
+            $fille = $category->getNom();
+            $tabCatg .= "<tr><td>{$fille}</td><td style>{$mere}</td><td><a href='categorie.php?id={$category->getId()}'>Modifier</a></td><td><a href='panel.php?deleteCatg={$category->getId()}'>Supprimer</a></td></tr>";
         }
 
         $content = '';
@@ -226,9 +227,9 @@ SQL;
                 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#recapeleve" role="tab" aria-controls="Récap des élèves">Récapitulatif des élèves</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutereleve" role="tab" aria-controls="Ajouter un élève">Ajouter un élève</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recapobservable" role="tab" aria-controls="Modifier un élève">Récapitulatif des observables</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajouterobservable" role="tab" aria-controls="Ajouter une observable">Ajouter une observable</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajouterobservable" role="tab" aria-controls="Ajouter un observable">Ajouter un observable</a></li>
                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#recapcatg" role="tab" aria-controls="Modifier un élève">Récapitulatif des catégories</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutcatg" role="tab" aria-controls="Ajouter une observable">Ajouter une catégorie</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#ajoutcatg" role="tab" aria-controls="Ajouter un observable">Ajouter une catégorie</a></li>
                 {$links}
             </ul>
     
@@ -251,6 +252,7 @@ SQL;
                                     <option value="1">Petite section</option>
                                     <option value="2">Moyenne section</option>
                                     <option value="3">Grande section</option>
+                                    <option value="4">Archive</option>
                                 </select>
                             </form>
                         </div>
@@ -356,7 +358,7 @@ SQL;
     
                     <div style="height:25px;"></div>
                         <div style="overflow-x:auto;" class="btn-group offset-sm-3 col-sm-6" role="group" aria-label="bouton trier par...">
-                            <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher une observable ?">
+                            <input id="searchbar" type="text" class="search form-control" placeholder="Rechercher un observable ?">
                         </div>
         
                         <section class="row text-center placeholders">
@@ -382,7 +384,7 @@ SQL;
                 </div>
                 <!---------------------------------------------------------->
                 <div class="tab-pane" id="ajouterobservable" role="tabpanel">
-                    <h1>Ajouter une observable :</h1>
+                    <h1>Ajouter un observable :</h1>
             
                     <div style="height:25px;"></div>
     
@@ -414,19 +416,19 @@ SQL;
             
                     <div style="height:25px;"></div>
     
-                    <div class="tab-pane active" id="recapobservable" role="tabpanel">
-    
-                    <div style="height:25px;"></div>
-        
+                    <div class="tab-pane active" id="recapcatg" role="tabpanel">
+
                         <section class="row text-center placeholders">
                             <div style="overflow-x:auto;" class="col-sm-12 placeholder">
                                 <table class="table">
                                     <thead class="thead-inverse  text-center">
                                         <tr>
-                                            <th>Nom catégorie</th>
+                                            <th >Nom catégorie</th>
+                                            <th> catègorie mère </th>
                                             <th>Modifier</th>
                                             <th>Supprimer</th>
                                         </tr>
+                                        
                                     </thead>
                                     <tbody>
                                         {$tabCatg}
